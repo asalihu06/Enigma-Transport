@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Terms & Conditions — Enigma Transport Services</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Top bar ── */
+    .top-bar {
+      display: flex; justify-content: flex-end; align-items: center;
+      gap: 24px; background: var(--ink); padding: 7px 40px;
+      font-size: 12px; color: rgba(255,255,255,0.5); letter-spacing: 0.02em;
+    }
+    .top-bar-item { display: flex; align-items: center; gap: 7px; }
+    .top-bar-item svg { flex-shrink: 0; opacity: 0.6; }
+    @media (max-width: 760px) { .top-bar { display: none; } }
+
+    /* ── Header ── */
+    .header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1.5px solid var(--border);
+      padding: 0 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px; animation: slideDown 0.5s ease both;
+    }
+
+    /* Logo placeholder
+       REPLACE: remove .logo-placeholder div entirely, keep only:
+       <img src="images/logo.png" alt="Enigma Transport Services"> */
+    .logo-link { text-decoration: none; display: flex; align-items: center; flex-shrink: 0; }
+    .logo-img-wrap { height: 40px; width: 168px; display: flex; align-items: center; }
+    .logo-placeholder {
+      width: 100%; height: 40px; background: var(--green-pale);
+      border: 1.5px dashed rgba(91,191,58,0.4); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .logo-placeholder span {
+      font-family: var(--font-head); font-size: 10.5px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-dark);
+    }
+    .logo-img-wrap img { height: 40px; width: auto; display: block; object-fit: contain; }
+
+    /* Nav — bottom border slide-in */
+    .nav { display: flex; align-items: center; gap: 0; }
+    .nav a {
+      font-size: 14px; font-weight: 500; color: var(--ink-soft);
+      text-decoration: none; padding: 8px 16px;
+      position: relative; transition: color 0.22s; white-space: nowrap;
+    }
+    .nav a::after {
+      content: ''; position: absolute; bottom: 0; left: 50%; right: 50%;
+      height: 2.5px; background: var(--green); border-radius: 2px;
+      transition: left 0.28s cubic-bezier(.22,1,.36,1), right 0.28s cubic-bezier(.22,1,.36,1);
+    }
+    .nav a:hover { color: var(--green-dark); }
+    .nav a:hover::after { left: 12px; right: 12px; }
+    .nav a.active { color: var(--green-dark); font-weight: 600; }
+    .nav a.active::after { left: 12px; right: 12px; }
+    .nav-cta {
+      margin-left: 14px; font-family: var(--font-head); font-size: 13px; font-weight: 700;
+      background: var(--green); color: #fff !important;
+      padding: 10px 22px !important; border-radius: 100px !important;
+      border: none; cursor: pointer;
+      transition: background 0.2s, transform 0.2s !important;
+      flex-shrink: 0;
+    }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: var(--green-dark) !important; transform: scale(1.04) !important; }
+    .menu-toggle {
+      display: none; background: none; border: none;
+      cursor: pointer; padding: 6px; flex-direction: column; gap: 5px;
+    }
+    .menu-toggle span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:       #5bbf3a;
+      --green-dark:  #3a9e1f;
+      --green-pale:  #eaf7e4;
+      --ink:         #0e1a0a;
+      --ink-soft:    #3d4d38;
+      --muted:       #6b7c65;
+      --surface:     #ffffff;
+      --bg:          #f3f7f0;
+      --border:      rgba(91,191,58,0.22);
+      --font-head:   'Syne', sans-serif;
+      --font-body:   'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--surface); color: var(--ink); overflow-x: hidden; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to   { transform: translateY(0); opacity: 1; }
+    }
+
+        /* ── Page hero ── */
+    .page-hero { background: var(--ink); padding: 72px 40px 88px; position: relative; overflow: hidden; }
+    .page-hero::before { content: ''; position: absolute; top: -140px; right: -80px; width: 500px; height: 500px; border-radius: 50%; border: 1.5px solid rgba(91,191,58,0.1); pointer-events: none; }
+    .page-hero-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 1; }
+    .breadcrumb { font-size: 12px; color: rgba(255,255,255,0.3); margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
+    .breadcrumb a { color: var(--green); text-decoration: none; }
+    .section-tag { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-head); font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green); margin-bottom: 16px; }
+    .section-tag::before { content: ''; width: 20px; height: 2px; background: var(--green); border-radius: 2px; }
+    .page-hero h1 { font-family: var(--font-head); font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: #fff; line-height: 1.1; animation: fadeUp 0.55s 0.1s both; }
+    .page-hero h1 .accent { color: var(--green); }
+    .page-hero p { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.75; margin-top: 16px; max-width: 560px; animation: fadeUp 0.55s 0.2s both; }
+    .last-updated { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; font-size: 12px; color: rgba(255,255,255,0.3); animation: fadeUp 0.55s 0.3s both; }
+    .last-updated::before { content: ''; width: 6px; height: 6px; background: var(--green); border-radius: 50%; flex-shrink: 0; }
+
+    /* ── Main layout ── */
+    .terms-layout { max-width: 1100px; margin: 0 auto; padding: 72px 40px 100px; display: grid; grid-template-columns: 260px 1fr; gap: 64px; align-items: start; }
+    @media (max-width: 860px) { .terms-layout { grid-template-columns: 1fr; } }
+
+    /* ── Sticky sidebar TOC ── */
+    .toc { position: sticky; top: 88px; }
+    @media (max-width: 860px) { .toc { position: static; } }
+    .toc-title { font-family: var(--font-head); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+    .toc-list { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+    .toc-list a { display: block; font-size: 13px; color: var(--muted); text-decoration: none; padding: 7px 12px; border-radius: 8px; border-left: 2px solid transparent; transition: color 0.2s, background 0.2s, border-color 0.2s; line-height: 1.4; }
+    .toc-list a:hover { color: var(--green-dark); background: var(--green-pale); border-color: var(--green); }
+    .toc-list a.active { color: var(--green-dark); background: var(--green-pale); border-color: var(--green); font-weight: 600; }
+    .toc-note { font-size: 12px; color: var(--muted); line-height: 1.6; margin-top: 20px; padding: 14px 16px; background: var(--bg); border-radius: 10px; border: 1.5px solid var(--border); }
+
+    /* ── Terms content ── */
+    .terms-content { min-width: 0; }
+
+    .terms-section { margin-bottom: 56px; padding-bottom: 56px; border-bottom: 1.5px solid var(--border); scroll-margin-top: 88px; }
+    .terms-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .terms-section-num { font-family: var(--font-head); font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--green); margin-bottom: 10px; }
+    .terms-section h2 { font-family: var(--font-head); font-size: 1.35rem; font-weight: 800; color: var(--ink); margin-bottom: 20px; line-height: 1.2; }
+
+    .terms-section p { font-size: 14.5px; color: var(--ink-soft); line-height: 1.85; margin-bottom: 16px; }
+    .terms-section p:last-child { margin-bottom: 0; }
+
+    .terms-section ul, .terms-section ol { padding-left: 0; margin: 16px 0; display: flex; flex-direction: column; gap: 10px; list-style: none; }
+    .terms-section ul li, .terms-section ol li { display: flex; align-items: flex-start; gap: 12px; font-size: 14.5px; color: var(--ink-soft); line-height: 1.75; }
+    .terms-section ul li::before { content: ''; width: 6px; height: 6px; background: var(--green); border-radius: 50%; flex-shrink: 0; margin-top: 9px; }
+    .terms-section ol { counter-reset: item; }
+    .terms-section ol li { counter-increment: item; }
+    .terms-section ol li::before { content: counter(item) "."; font-family: var(--font-head); font-size: 12px; font-weight: 700; color: var(--green-dark); flex-shrink: 0; min-width: 20px; margin-top: 2px; }
+
+    /* definition boxes */
+    .definition-grid { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
+    .definition-item { background: var(--bg); border: 1.5px solid var(--border); border-left: 3px solid var(--green); border-radius: 0 10px 10px 0; padding: 14px 18px; }
+    .definition-item .def-term { font-family: var(--font-head); font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+    .definition-item .def-desc { font-size: 13.5px; color: var(--muted); line-height: 1.65; }
+
+    /* highlight box */
+    .highlight-box { background: var(--green-pale); border: 1.5px solid rgba(91,191,58,0.3); border-radius: 12px; padding: 20px 22px; margin: 20px 0; }
+    .highlight-box p { font-size: 14px; color: var(--ink-soft); line-height: 1.75; margin: 0; }
+    .highlight-box strong { color: var(--green-dark); }
+
+    /* warning box */
+    .warning-box { background: #fff8f0; border: 1.5px solid rgba(220,120,20,0.25); border-left: 3px solid #e07020; border-radius: 0 12px 12px 0; padding: 18px 20px; margin: 20px 0; }
+    .warning-box p { font-size: 14px; color: var(--ink-soft); line-height: 1.75; margin: 0; }
+
+    /* sub-heading inside section */
+    .terms-section h3 { font-family: var(--font-head); font-size: 1rem; font-weight: 700; color: var(--ink); margin: 28px 0 12px; }
+
+    
+    /* ── Footer ─────────────────────────────────────────── */
+    footer { background: var(--ink); padding: 64px 40px 0; }
+    .footer-top { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 52px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    @media (max-width: 900px) { .footer-top { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 520px) { .footer-top { grid-template-columns: 1fr; } }
+
+    /* brand column spans full width of brand cell */
+    .footer-brand { display: flex; flex-direction: column; gap: 18px; }
+    .footer-logo-wrap { height: 38px; width: 160px; }
+    .footer-logo-placeholder {
+      width: 100%; height: 38px;
+      background: rgba(255,255,255,0.05);
+      border: 1.5px dashed rgba(255,255,255,0.14);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .footer-logo-placeholder span {
+      font-family: var(--font-head); font-size: 10px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.2);
+    }
+    .footer-tagline { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.75; max-width: 280px; }
+
+    /* contact block */
+    .footer-contact-block { display: flex; flex-direction: column; gap: 10px; }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; }
+    .footer-contact-icon { width: 14px; height: 14px; flex-shrink: 0; color: var(--green); margin-top: 2px; }
+    .footer-contact-item a,
+    .footer-contact-item span { font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; line-height: 1.5; transition: color 0.2s; }
+    .footer-contact-item a:hover { color: var(--green); }
+
+    /* link columns */
+    .footer-links { display: contents; }
+    .footer-col h5 {
+      font-family: var(--font-head); font-size: 10.5px; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 16px;
+    }
+    .footer-col a {
+      display: block; font-size: 13px; color: rgba(255,255,255,0.45);
+      text-decoration: none; margin-bottom: 10px; transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--green); }
+
+    /* bottom bar */
+    .footer-bottom {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 10px;
+      padding: 20px 0;
+      font-size: 12px; color: rgba(255,255,255,0.22);
+    }
+    .footer-bottom a { color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
+    .footer-bottom a:hover { color: var(--green); }
+    .footer-dot { margin: 0 6px; }
+
+    @media (max-width: 760px) {
+      footer { padding: 48px 20px 0; }
+      .footer-bottom { padding: 16px 0; }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 760px) {
+      
+      
+      
+      
+      
+      
+      
+      .nav a.active, 
+      
+      .page-hero { padding: 56px 20px 72px; }
+      .terms-layout { padding: 48px 20px 72px; gap: 40px; }
+      footer { padding: 48px 20px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <span>+234 800 000 0000</span>
+    <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1871767e77587d76717f75796c6a79766b68776a6c367b7775">[email&#160;protected]</a></span>
+    <span>Abuja, Nigeria</span>
+  </div>
+
+  <header class="header">
+    <a href="home.html" class="logo-link">
+      <div class="logo-img-wrap">
+        <!--
+          LOGO PLACEHOLDER — replace this div with:
+          <img src="images/logo.png" alt="Enigma Transport Services">
+        -->
+        <div class="logo-placeholder">
+          <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><rect x="1" y="5" width="16" height="10" rx="2" stroke="#3a9e1f" stroke-width="1.5"/><path d="M5 5V4a4 4 0 018 0v1" stroke="#3a9e1f" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span>logo.png</span>
+        </div>
+      </div>
+    </a>
+    <button class="menu-toggle" aria-label="Toggle menu"
+      onclick="this.nextElementSibling.classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+      <a href="quote.html" class="nav-cta">Get a Quote</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb">
+        <a href="home.html">Home</a> <span>›</span> <span>Terms &amp; Conditions</span>
+      </div>
+      <div class="section-tag">Legal</div>
+      <h1>Terms &amp; <span class="accent">Conditions</span></h1>
+      <p>These terms govern the hire purchase plans offered by Enigma Transport Services. Please read them carefully before entering into any agreement with us.</p>
+      <div class="last-updated">Last updated: January 2026</div>
+    </div>
+  </section>
+
+  <!-- Main layout -->
+  <div class="terms-layout">
+
+    <!-- Sidebar TOC -->
+    <aside class="toc">
+      <p class="toc-title">Contents</p>
+      <ul class="toc-list">
+        <li><a href="#definitions" class="active">1. Definitions</a></li>
+        <li><a href="#agreement">2. The Agreement</a></li>
+        <li><a href="#eligibility">3. Eligibility</a></li>
+        <li><a href="#deposit">4. Initial Deposit</a></li>
+        <li><a href="#remittances">5. Weekly Remittances</a></li>
+        <li><a href="#ownership">6. Ownership Transfer</a></li>
+        <li><a href="#guarantor">7. Guarantor Obligations</a></li>
+        <li><a href="#asset-control">8. Asset Control &amp; GPS</a></li>
+        <li><a href="#maintenance">9. Maintenance &amp; Repairs</a></li>
+        <li><a href="#insurance">10. Insurance</a></li>
+        <li><a href="#default">11. Default &amp; Recovery</a></li>
+        <li><a href="#early-completion">12. Early Completion</a></li>
+        <li><a href="#termination">13. Termination</a></li>
+        <li><a href="#liability">14. Liability</a></li>
+        <li><a href="#governing-law">15. Governing Law</a></li>
+        <li><a href="#amendments">16. Amendments</a></li>
+        <li><a href="#contact-legal">17. Contact</a></li>
+      </ul>
+      <p class="toc-note">These terms apply to all hire purchase plans offered by Enigma Transport Services. By signing a hire purchase agreement, you confirm you have read and accepted these terms.</p>
+    </aside>
+
+    <!-- Terms content -->
+    <main class="terms-content">
+
+      <!-- 1. Definitions -->
+      <section class="terms-section" id="definitions">
+        <div class="terms-section-num">Section 1</div>
+        <h2>Definitions</h2>
+        <p>In these Terms and Conditions, the following words and phrases have the meanings set out below unless the context requires otherwise.</p>
+        <div class="definition-grid">
+          <div class="definition-item">
+            <div class="def-term">"Enigma" / "we" / "us" / "the Company"</div>
+            <div class="def-desc">Enigma Transport Services, a hire purchase and asset management enterprise based in Abuja, Federal Capital Territory, Nigeria.</div>
+          </div>
+          <div class="definition-item">
+            <div class="def-term">"Client" / "you" / "the Driver"</div>
+            <div class="def-desc">The individual who has applied for and entered into a hire purchase agreement with Enigma Transport Services.</div>
+          </div>
+          <div class="definition-item">
+            <div class="def-term">"Asset"</div>
+            <div class="def-desc">The item of property — being a wheelbarrow, motorbike, Keke Napep (tricycle), or used automobile — that is the subject of the hire purchase agreement.</div>
+          </div>
+          <div class="definition-item">
+            <div class="def-term">"Hire Purchase Agreement"</div>
+            <div class="def-desc">The legally binding contract signed by the Client, the Guarantor, and Enigma, setting out the full terms of the hire purchase arrangement including all financial figures, obligations, and the conditions for ownership transfer.</div>
+          </div>
+          <div class="definition-item">
+            <div class="def-term">"Initial Deposit" / "Day-1 Payment"</div>
+            <div class="def-desc">The upfront equity contribution paid by the Client upon signing the Hire Purchase Agreement, which secures the asset and confirms the plan. Amount varies by asset type and chosen tier.</div>
+          </div>
+          <div class="definition-item">
+            <div class="def-term">"Weekly Remittance"</div>
+            <div class="def-desc">The fixed amount the Client agrees to pay each week for the duration of the contract, as specified in the Hire Purchase Agreement.</div>
+          </div>
+          <div class="definition-item">
+            <div class="def-term">"Contract Value"</div>
+            <div class="def-desc">The total amount payable under the Hire Purchase Agreement, comprising the Initial Deposit plus all Weekly Remittances over the full contract duration.</div>
+          </div>
+          <div class="definition-item">
+            <div class="def-term">"Guarantor"</div>
+            <div class="def-desc">The individual who signs the Deed of Indemnity on behalf of the Client and assumes liability for the full Contract Value in the event of default.</div>
+          </div>
+          <div class="definition-item">
+            <div class="def-term">"Deed of Indemnity"</div>
+            <div class="def-desc">The legal document signed by the Guarantor which sets out their liability and obligations in the event that the Client defaults on the Hire Purchase Agreement.</div>
+          </div>
+          <div class="definition-item">
+            <div class="def-term">"Tier A" / "Tier B"</div>
+            <div class="def-desc">The two structured plan options available for each asset. Tier A carries a higher Initial Deposit with a shorter contract duration. Tier B carries a lower Initial Deposit with a longer contract duration and a slightly higher total Contract Value.</div>
+          </div>
+          <div class="definition-item">
+            <div class="def-term">"Default"</div>
+            <div class="def-desc">The failure by the Client to make two or more consecutive Weekly Remittances without an agreed resolution with Enigma, or any material breach of the Hire Purchase Agreement.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. The Agreement -->
+      <section class="terms-section" id="agreement">
+        <div class="terms-section-num">Section 2</div>
+        <h2>The Agreement</h2>
+        <p>These Terms and Conditions form part of every Hire Purchase Agreement entered into between Enigma Transport Services and a Client. By signing the Hire Purchase Agreement, both the Client and the Guarantor confirm that they have read, understood, and agreed to be bound by these terms.</p>
+        <p>No hire purchase arrangement is binding until the Hire Purchase Agreement has been signed by the Client, the Guarantor, and an authorised representative of Enigma, and the Initial Deposit has been received in full.</p>
+        <p>Submitting a quote request, filling in a contact form, or receiving a verbal or written quote from Enigma does not constitute a binding agreement and does not obligate either party to proceed.</p>
+        <div class="highlight-box">
+          <p><strong>The complete and final terms of your specific plan</strong> — including all financial figures, asset details, repayment schedule, and duration — are set out in your individual Hire Purchase Agreement. In the event of any conflict between these general Terms and Conditions and the specific terms of your Hire Purchase Agreement, the Hire Purchase Agreement shall take precedence.</p>
+        </div>
+      </section>
+
+      <!-- 3. Eligibility -->
+      <section class="terms-section" id="eligibility">
+        <div class="terms-section-num">Section 3</div>
+        <h2>Eligibility</h2>
+        <p>To be eligible to enter into a Hire Purchase Agreement with Enigma Transport Services, the Client must:</p>
+        <ul>
+          <li>Be at least 18 years of age at the time of application.</li>
+          <li>Be resident in Abuja, Federal Capital Territory, or as otherwise agreed with Enigma in writing.</li>
+          <li>Have a demonstrated or credible source of income sufficient to meet the agreed Weekly Remittance schedule.</li>
+          <li>Present one eligible Guarantor who meets the requirements set out in Section 7 of these Terms.</li>
+          <li>Provide accurate and complete information in their application. Any misrepresentation may result in immediate termination of the Agreement.</li>
+        </ul>
+        <p>Enigma reserves the right to decline any application without being required to give reasons for its decision. Approval of an application does not guarantee that an asset will be deployed until the Initial Deposit is received and the Hire Purchase Agreement is fully executed.</p>
+        <p>For higher-tier assets (motorbike, Keke Napep, and used automobile), additional eligibility requirements may apply and will be communicated during the verification process.</p>
+      </section>
+
+      <!-- 4. Initial Deposit -->
+      <section class="terms-section" id="deposit">
+        <div class="terms-section-num">Section 4</div>
+        <h2>Initial Deposit</h2>
+        <p>Upon signing the Hire Purchase Agreement, the Client is required to pay the Initial Deposit in full before any asset is sourced or deployed. The Initial Deposit amount is fixed based on the chosen asset type and tier (Tier A or Tier B) and is clearly stated in the Hire Purchase Agreement.</p>
+        <p>The Initial Deposit is non-refundable once the asset has been sourced and deployed. If the Client withdraws from the Agreement after the asset has been sourced but before delivery, Enigma reserves the right to retain the Initial Deposit to cover sourcing and administrative costs.</p>
+        <ul>
+          <li>The Initial Deposit is applied directly to the total Contract Value and reduces the outstanding balance from Day 1.</li>
+          <li>Payment of the Initial Deposit must be made via bank transfer or mobile payment as agreed, with evidence provided to Enigma.</li>
+          <li>Enigma will issue written confirmation of receipt of the Initial Deposit.</li>
+          <li>Asset sourcing and deployment will only commence upon confirmed receipt of the full Initial Deposit.</li>
+        </ul>
+        <div class="warning-box">
+          <p><strong>No asset will be deployed and no contract will be active until the Initial Deposit is received in full and confirmed by Enigma.</strong> Verbal or informal agreements do not commit either party.</p>
+        </div>
+      </section>
+
+      <!-- 5. Weekly Remittances -->
+      <section class="terms-section" id="remittances">
+        <div class="terms-section-num">Section 5</div>
+        <h2>Weekly Remittances</h2>
+        <p>From the date agreed in the Hire Purchase Agreement, the Client is obligated to make Weekly Remittance payments as scheduled. The amount, frequency, and total number of payments are fixed in the Agreement and will not change during the contract period unless expressly agreed in writing by both parties.</p>
+
+        <h3>Payment Method</h3>
+        <p>Weekly Remittances must be made via bank transfer or mobile payment to the account details provided by Enigma in the Hire Purchase Agreement. Each payment must be accompanied by evidence of transfer (screenshot or receipt) submitted to Enigma through the agreed communication channel.</p>
+
+        <h3>Payment Schedule</h3>
+        <p>Payments are due on the agreed weekly date. If a payment date falls on a public holiday, payment is expected on the next working day unless otherwise agreed.</p>
+
+        <h3>Excess Payments</h3>
+        <p>Any payment made above the agreed Weekly Remittance amount is applied directly to the outstanding contract balance. This automatically reduces the remaining contract duration. Clients who regularly pay above the scheduled amount will complete their contract sooner and may be eligible for an early completion incentive at Enigma's discretion.</p>
+
+        <h3>Tracking</h3>
+        <p>Enigma maintains a real-time digital ledger of all payments received against each active contract. Clients may request a statement of their payment history and outstanding balance at any time by contacting Enigma directly.</p>
+      </section>
+
+      <!-- 6. Ownership Transfer -->
+      <section class="terms-section" id="ownership">
+        <div class="terms-section-num">Section 6</div>
+        <h2>Ownership Transfer</h2>
+        <p>The Asset remains the legal property of Enigma Transport Services for the entire duration of the Hire Purchase Agreement. The Client does not acquire any ownership rights over the Asset until the full Contract Value has been paid.</p>
+        <p>Upon receipt of the final Weekly Remittance and confirmation that the total Contract Value has been paid in full, Enigma will formally transfer legal ownership of the Asset to the Client. This transfer will be confirmed in writing.</p>
+        <ul>
+          <li>The Client may not sell, transfer, sublease, mortgage, or otherwise encumber the Asset during the contract period without the prior written consent of Enigma.</li>
+          <li>The Client may not use the Asset as collateral for any loan or financial arrangement during the contract period.</li>
+          <li>The Client is permitted to use the Asset for its intended commercial purpose during the contract period, provided that use is in accordance with these Terms.</li>
+        </ul>
+        <div class="highlight-box">
+          <p><strong>Ownership transfer is unconditional on completion.</strong> Once the full Contract Value is paid, Enigma will issue written confirmation of ownership transfer. No additional fees, charges, or conditions will be imposed at this stage beyond what is set out in the original Hire Purchase Agreement.</p>
+        </div>
+      </section>
+
+      <!-- 7. Guarantor Obligations -->
+      <section class="terms-section" id="guarantor">
+        <div class="terms-section-num">Section 7</div>
+        <h2>Guarantor Obligations</h2>
+        <p>Every Hire Purchase Agreement at Enigma requires a single, high-quality Guarantor. The Guarantor is not a co-owner of the Asset and acquires no ownership rights. Their role is to provide a legally enforceable accountability layer that protects both the Client and Enigma throughout the contract period.</p>
+
+        <h3>Guarantor Eligibility</h3>
+        <p>An eligible Guarantor must be one of the following:</p>
+        <ul>
+          <li>A gainfully employed professional in full-time or established part-time employment.</li>
+          <li>An established business owner with verifiable business activity.</li>
+          <li>A recognised community or religious leader of standing.</li>
+        </ul>
+        <p>Enigma reserves the right to reject a proposed Guarantor if they do not, in Enigma's reasonable judgement, meet the eligibility criteria. A replacement Guarantor may be proposed by the Client.</p>
+
+        <h3>Guarantor's Legal Obligations</h3>
+        <p>The Guarantor is required to sign a Deed of Indemnity that covers the full Contract Value. By signing, the Guarantor confirms that:</p>
+        <ul>
+          <li>They fully understand the nature and financial scope of the contract they are supporting.</li>
+          <li>In the event that the Client defaults on the Hire Purchase Agreement, the Guarantor assumes primary liability for either the return of the Asset in good condition or the payment of any outstanding balance on the Contract Value.</li>
+          <li>Enigma may escalate directly to the Guarantor after two consecutive missed Weekly Remittances that have not been resolved through engagement with the Client.</li>
+          <li>The Guarantor's liability extends for the full duration of the contract and until either the Contract Value is paid in full or the Asset is returned in satisfactory condition.</li>
+        </ul>
+        <div class="warning-box">
+          <p><strong>The Guarantor obligation is a firm requirement and is not negotiable.</strong> No plan will be activated without a signed Deed of Indemnity from an eligible Guarantor. Clients are responsible for ensuring their proposed Guarantor understands the full scope of their liability before signing.</p>
+        </div>
+      </section>
+
+      <!-- 8. Asset Control & GPS -->
+      <section class="terms-section" id="asset-control">
+        <div class="terms-section-num">Section 8</div>
+        <h2>Asset Control &amp; GPS Tracking</h2>
+        <p>All motorised assets — motorbikes, Keke Napep, and used automobiles — are fitted with GPS tracking devices and remote engine immobilization systems before delivery. The Client acknowledges and consents to this as a condition of receiving the Asset.</p>
+
+        <h3>GPS Tracking</h3>
+        <p>Enigma uses GPS tracking to monitor the location and operational status of the Asset throughout the contract period. This data is used for:</p>
+        <ul>
+          <li>Verification of asset deployment and use.</li>
+          <li>Recovery of the Asset in the event of default or theft.</li>
+          <li>Enforcement of contract obligations in the event of Default.</li>
+        </ul>
+        <p>GPS data will not be used for any purpose outside of contract management and asset protection. Enigma will not sell or share GPS data with third parties except where required by law or as necessary for asset recovery.</p>
+
+        <h3>Remote Immobilization</h3>
+        <p>Enigma reserves the right to remotely immobilize the Asset's engine under the following circumstances only:</p>
+        <ul>
+          <li>Two consecutive missed Weekly Remittances have occurred and the Client has not engaged with Enigma to agree a resolution.</li>
+          <li>Enigma has reasonable grounds to believe the Asset is being misused, at risk of loss, or removed from the agreed operational area without consent.</li>
+          <li>A formal recovery procedure has been activated following Default.</li>
+        </ul>
+        <p>Enigma will always attempt direct contact and resolution with the Client before activating remote immobilization. Remote immobilization will be reversed promptly upon resolution of the issue that triggered it.</p>
+
+        <h3>Client Obligations Regarding the GPS Device</h3>
+        <ul>
+          <li>The Client must not tamper with, remove, disable, or obstruct the GPS tracking device.</li>
+          <li>Any attempt to interfere with the GPS device constitutes a material breach of the Hire Purchase Agreement and may result in immediate termination and recovery of the Asset.</li>
+          <li>The cost of replacing a GPS device that has been damaged or removed by the Client will be borne by the Client.</li>
+        </ul>
+      </section>
+
+      <!-- 9. Maintenance & Repairs -->
+      <section class="terms-section" id="maintenance">
+        <div class="terms-section-num">Section 9</div>
+        <h2>Maintenance &amp; Repairs</h2>
+        <p>All assets are fully serviced and confirmed roadworthy before delivery. From the point of delivery, maintenance responsibilities are shared between the Client and Enigma as follows.</p>
+
+        <h3>Client Responsibilities</h3>
+        <p>The Client is responsible for all routine maintenance and consumable-related repairs arising from normal use, including but not limited to:</p>
+        <ul>
+          <li>Engine oil and oil filter changes.</li>
+          <li>Air filter, fuel filter, and spark plug replacements.</li>
+          <li>Brake pads, brake fluid, and brake adjustments.</li>
+          <li>Tyre wear, puncture repairs, and tyre replacements.</li>
+          <li>Minor bodywork repairs resulting from normal operational use.</li>
+          <li>Battery replacement (for motorised assets).</li>
+        </ul>
+        <p>The Client is expected to maintain the Asset in good working condition throughout the contract period. Neglect of routine maintenance that leads to serious mechanical failure may be treated as a breach of contract.</p>
+
+        <h3>Enigma Responsibilities</h3>
+        <p>Enigma is responsible for major structural failures that occur through no fault of the Client, specifically:</p>
+        <ul>
+          <li>Engine replacement necessitated by internal mechanical failure (not resulting from neglect or misuse).</li>
+          <li>Gearbox replacement under the same conditions.</li>
+        </ul>
+        <p>Enigma reserves the right to assess any major repair claim before committing to coverage. The Client must notify Enigma promptly of any major mechanical issue and must not authorise major repair work without Enigma's prior written approval.</p>
+
+        <h3>Approved Workshops</h3>
+        <p>For major repairs covered by Enigma, the Client must use a workshop approved or designated by Enigma. Work carried out at unapproved workshops without Enigma's consent may not be covered.</p>
+      </section>
+
+      <!-- 10. Insurance -->
+      <section class="terms-section" id="insurance">
+        <div class="terms-section-num">Section 10</div>
+        <h2>Insurance</h2>
+        <p>All motorised assets — motorbikes, Keke Napep, and used automobiles — under an active Hire Purchase Agreement are covered by basic asset insurance for the duration of the contract. The specific terms and coverage limits of the insurance policy will be disclosed at the point of agreement.</p>
+        <ul>
+          <li>Insurance covers the asset for the duration of the active contract period only.</li>
+          <li>Once the contract is complete and ownership has transferred to the Client, the Client becomes solely responsible for arranging and maintaining their own insurance.</li>
+          <li>The wheelbarrow asset is not covered by insurance under the standard plan. This may be subject to change and will be communicated if applicable.</li>
+          <li>The Client must not make any insurance claim without notifying Enigma first.</li>
+          <li>Any fraudulent or exaggerated insurance claim by the Client constitutes a material breach of the Hire Purchase Agreement.</li>
+        </ul>
+      </section>
+
+      <!-- 11. Default & Recovery -->
+      <section class="terms-section" id="default">
+        <div class="terms-section-num">Section 11</div>
+        <h2>Default &amp; Recovery</h2>
+        <p>A Default occurs when the Client misses two or more consecutive Weekly Remittances without engaging with Enigma to agree a resolution, or when the Client commits any other material breach of the Hire Purchase Agreement.</p>
+
+        <h3>Escalation Process</h3>
+        <p>Enigma follows a structured escalation process before taking formal recovery action:</p>
+        <ol>
+          <li><strong>One missed payment:</strong> Enigma contacts the Client directly to understand the situation and agree a catch-up plan.</li>
+          <li><strong>Two consecutive missed payments without resolution:</strong> Enigma formally notifies the Client of Default and may activate remote immobilization of motorised assets. The Guarantor is formally notified of the Default.</li>
+          <li><strong>Continued non-payment following notification:</strong> Enigma activates the formal recovery procedure, which may include physical recovery of the Asset.</li>
+        </ol>
+
+        <h3>Consequences of Default</h3>
+        <ul>
+          <li>The full outstanding balance of the Contract Value becomes immediately due and payable.</li>
+          <li>Enigma is entitled to recover the Asset from the Client without further notice.</li>
+          <li>The Guarantor assumes liability for either the return of the Asset or the payment of the outstanding balance, as set out in the Deed of Indemnity.</li>
+          <li>Any payments made prior to Default are not refundable. They will be applied against the outstanding Contract Value to determine the net amount due.</li>
+          <li>Enigma reserves the right to pursue legal remedies to recover any outstanding amounts through appropriate channels under Nigerian law.</li>
+        </ul>
+
+        <div class="warning-box">
+          <p><strong>Enigma's preference is always to resolve payment difficulties directly with the Client.</strong> Clients experiencing financial hardship are strongly encouraged to contact Enigma immediately rather than allowing missed payments to accumulate. Proactive communication significantly increases the likelihood of an agreed resolution being reached.</p>
+        </div>
+      </section>
+
+      <!-- 12. Early Completion -->
+      <section class="terms-section" id="early-completion">
+        <div class="terms-section-num">Section 12</div>
+        <h2>Early Completion</h2>
+        <p>Clients are permitted and encouraged to complete their contracts ahead of schedule. The following applies to early completion:</p>
+        <ul>
+          <li>There is no prepayment penalty. Any amount paid above the agreed Weekly Remittance is applied directly to the outstanding balance, automatically shortening the contract duration.</li>
+          <li>The Client may make a lump sum payment at any time to settle the remaining outstanding balance. Enigma will issue written confirmation of the outstanding balance upon request.</li>
+          <li>Upon receipt of the final payment that clears the Contract Value in full, Enigma will formally confirm completion and initiate the ownership transfer process.</li>
+          <li>Clients who complete their contracts early may be eligible for a fast-track completion incentive at Enigma's discretion. The availability and terms of any such incentive will be confirmed at the time of the early settlement.</li>
+        </ul>
+      </section>
+
+      <!-- 13. Termination -->
+      <section class="terms-section" id="termination">
+        <div class="terms-section-num">Section 13</div>
+        <h2>Termination</h2>
+
+        <h3>Termination by the Client</h3>
+        <p>The Client may request termination of the Hire Purchase Agreement at any time before the full Contract Value is paid. In the event of Client-initiated termination:</p>
+        <ul>
+          <li>The Client must return the Asset to Enigma in good working condition, reasonable wear and tear excepted.</li>
+          <li>All payments made to date are non-refundable.</li>
+          <li>If the Asset is returned in a damaged or deteriorated condition beyond normal wear and tear, Enigma may deduct the cost of repair or remediation from any credit due to the Client.</li>
+          <li>No ownership rights transfer to the Client upon termination. The Asset remains the property of Enigma.</li>
+        </ul>
+
+        <h3>Termination by Enigma</h3>
+        <p>Enigma may terminate the Hire Purchase Agreement immediately and without further notice in the following circumstances:</p>
+        <ul>
+          <li>The Client has Defaulted on the Agreement as defined in Section 11.</li>
+          <li>The Client has provided false or materially misleading information in their application or during the contract period.</li>
+          <li>The Client has tampered with or removed the GPS tracking device.</li>
+          <li>The Client has used the Asset for purposes materially outside its intended commercial use.</li>
+          <li>The Client has attempted to sell, transfer, or encumber the Asset without Enigma's written consent.</li>
+        </ul>
+        <p>Upon termination by Enigma, the outstanding Contract Value becomes immediately due, and Enigma is entitled to recover the Asset forthwith.</p>
+      </section>
+
+      <!-- 14. Liability -->
+      <section class="terms-section" id="liability">
+        <div class="terms-section-num">Section 14</div>
+        <h2>Limitation of Liability</h2>
+        <p>Enigma Transport Services provides assets in good faith, based on mechanical inspection and standard sourcing practices. Enigma does not warrant the absolute fitness of the Asset for any specific purpose beyond its described commercial use.</p>
+        <ul>
+          <li>Enigma is not liable for any loss of income, business interruption, or consequential losses arising from mechanical failure, accident, theft, or any other event affecting the Asset, except where such liability arises from Enigma's proven negligence.</li>
+          <li>The Client is solely responsible for operating the Asset safely and in compliance with all applicable Nigerian road traffic laws, licensing requirements, and regulations.</li>
+          <li>Enigma is not responsible for any fines, penalties, or legal liabilities incurred by the Client in connection with the use of the Asset.</li>
+          <li>Any liability of Enigma arising under or in connection with the Hire Purchase Agreement shall be limited to the amount of the Initial Deposit paid by the Client.</li>
+        </ul>
+      </section>
+
+      <!-- 15. Governing Law -->
+      <section class="terms-section" id="governing-law">
+        <div class="terms-section-num">Section 15</div>
+        <h2>Governing Law &amp; Disputes</h2>
+        <p>These Terms and Conditions and all Hire Purchase Agreements entered into with Enigma Transport Services are governed by and construed in accordance with the laws of the Federal Republic of Nigeria.</p>
+        <p>In the event of a dispute arising from or in connection with a Hire Purchase Agreement, both parties agree to first attempt to resolve the matter through direct negotiation in good faith. If the matter cannot be resolved within 21 days of written notification of the dispute, either party may refer the matter to mediation or commence legal proceedings in the appropriate court of competent jurisdiction in Abuja, Federal Capital Territory.</p>
+        <p>Nothing in this clause prevents Enigma from seeking emergency injunctive relief or asset recovery through the courts where necessary to protect its interests.</p>
+      </section>
+
+      <!-- 16. Amendments -->
+      <section class="terms-section" id="amendments">
+        <div class="terms-section-num">Section 16</div>
+        <h2>Amendments to Terms</h2>
+        <p>Enigma Transport Services reserves the right to update or amend these Terms and Conditions at any time. Any changes will be published on this page with an updated revision date.</p>
+        <p>Changes to these general Terms do not retroactively alter the terms of any Hire Purchase Agreement already in force. The financial figures, schedule, and specific obligations set out in a signed Hire Purchase Agreement remain fixed for the life of that contract unless both parties agree in writing to a variation.</p>
+        <p>Clients are encouraged to review these Terms periodically. Continued use of Enigma's services following an update to these Terms constitutes acceptance of the revised Terms for any new agreements entered into after the revision date.</p>
+      </section>
+
+      <!-- 17. Contact -->
+      <section class="terms-section" id="contact-legal">
+        <div class="terms-section-num">Section 17</div>
+        <h2>Contact for Legal Enquiries</h2>
+        <p>If you have any questions about these Terms and Conditions or wish to raise a concern about your Hire Purchase Agreement, please contact Enigma Transport Services through the following channels:</p>
+        <div class="definition-grid">
+          <div class="definition-item">
+            <div class="def-term">Email</div>
+            <div class="def-desc"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="523b3c343d12373c3b353f332620333c21223d20267c313d3f">[email&#160;protected]</a></div>
+          </div>
+          <div class="definition-item">
+            <div class="def-term">Phone</div>
+            <div class="def-desc">+234 800 000 0000 — Monday to Saturday, 8:00 AM to 6:00 PM</div>
+          </div>
+          <div class="definition-item">
+            <div class="def-term">Office Address</div>
+            <div class="def-desc">No. 8A Thaba Tseka Street, Wuse 2, Abuja, Federal Capital Territory, Nigeria</div>
+          </div>
+        </div>
+        <p style="margin-top: 20px;">For formal legal correspondence, all notices must be submitted in writing and delivered to the office address above or via email to <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b8d1d6ded7f8ddd6d1dfd5d9cccad9d6cbc8d7cacc96dbd7d5">[email&#160;protected]</a>. Notices sent by email are deemed received on the next working day following transmission.</p>
+      </section>
+
+    </main>
+  </div>
+
+    <!-- Footer -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <!--
+          FOOTER LOGO PLACEHOLDER
+          Replace the .footer-logo-placeholder div with:
+          <img src="images/logo-white.png" alt="Enigma Transport Services" style="height:36px;width:auto;display:block;">
+        -->
+        <div class="footer-logo-wrap">
+          <div class="footer-logo-placeholder">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <rect x="1" y="5" width="16" height="10" rx="2" stroke="rgba(255,255,255,0.3)" stroke-width="1.4"/>
+              <path d="M5 5V4a4 4 0 018 0v1" stroke="rgba(255,255,255,0.3)" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+            <span>logo-white.png</span>
+          </div>
+        </div>
+        <p class="footer-tagline">A structured hire purchase platform helping transport workers in Abuja own their assets. Founded 2026.</p>
+        <div class="footer-contact-block">
+          <div class="footer-contact-item">
+            <!--
+              ICON PLACEHOLDER — replace svg with your phone icon image:
+              <img src="images/icon-phone.svg" alt="" width="14" height="14">
+            -->
+            <svg class="footer-contact-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 10.67v2a1.33 1.33 0 01-1.45 1.33 13.19 13.19 0 01-5.75-2.05 13 13 0 01-4-4A13.19 13.19 0 01.75 2.45 1.33 1.33 0 012.07 1h2a1.33 1.33 0 011.33 1.14 8.56 8.56 0 00.47 1.88 1.33 1.33 0 01-.3 1.41L4.59 6.4a10.67 10.67 0 004 4l.97-.97a1.33 1.33 0 011.41-.3 8.56 8.56 0 001.88.47A1.33 1.33 0 0114 10.67z"/></svg>
+            <a href="tel:+2348000000000">+234 800 000 0000</a>
+          </div>
+          <div class="footer-contact-item">
+            <!--
+              ICON PLACEHOLDER — replace svg with your email icon image:
+              <img src="images/icon-email.svg" alt="" width="14" height="14">
+            -->
+            <svg class="footer-contact-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="14" height="10" rx="1.5"/><path d="M1 3l7 5.5L15 3"/></svg>
+            <a href="/cdn-cgi/l/email-protection#f990979f96b99c97909e94988d8b98978a89968b8dd79a9694"><span class="__cf_email__" data-cfemail="036a6d656c43666d6a646e627771626d70736c71772d606c6e">[email&#160;protected]</span></a>
+          </div>
+          <div class="footer-contact-item">
+            <!--
+              ICON PLACEHOLDER — replace svg with your location icon image:
+              <img src="images/icon-location.svg" alt="" width="14" height="14">
+            -->
+            <svg class="footer-contact-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1.5A4.5 4.5 0 0112.5 6c0 3.5-4.5 8.5-4.5 8.5S3.5 9.5 3.5 6A4.5 4.5 0 018 1.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            <span>8A Thaba Tseka Street, Wuse 2, Abuja</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Company</h5>
+          <a href="home.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="services.html">Services</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h5>Ownership Plans</h5>
+          <a href="plans.html#wheelbarrow">Wheelbarrow</a>
+          <a href="plans.html#keke">Keke Napep</a>
+          <a href="plans.html#motorbike">Motorbike</a>
+          <a href="plans.html#automobile">Used Automobile</a>
+          <a href="plans.html#tiers">Tier A vs Tier B</a>
+        </div>
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <a href="terms.html">Terms &amp; Conditions</a>
+          <a href="contact.html">Privacy Policy</a>
+          <a href="quote.html">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 Enigma Transport Services. All rights reserved.</span>
+      <span>
+        <a href="terms.html">Terms &amp; Conditions</a>
+        <span class="footer-dot">&middot;</span>
+        <a href="contact.html">Privacy Policy</a>
+      </span>
+    </div>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/c
+</body>
+</html>
