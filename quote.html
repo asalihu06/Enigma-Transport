@@ -6,540 +6,262 @@
   <title>Get a Quote — Enigma Transport Services</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
-
-  <style>
-    /* ── Top bar ── */
-    .top-bar {
-      display: flex; justify-content: flex-end; align-items: center;
-      gap: 24px; background: var(--ink); padding: 7px 40px;
-      font-size: 12px; color: rgba(255,255,255,0.5); letter-spacing: 0.02em;
-    }
-    .top-bar-item { display: flex; align-items: center; gap: 7px; }
-    .top-bar-item svg { flex-shrink: 0; opacity: 0.6; }
-    @media (max-width: 760px) { .top-bar { display: none; } }
-
-    /* ── Header ── */
-    .header {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1.5px solid var(--border);
-      padding: 0 40px;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 68px; animation: slideDown 0.5s ease both;
-    }
-
-    /* Logo placeholder
-       REPLACE: remove .logo-placeholder div entirely, keep only:
-       <img src="images/logo.png" alt="Enigma Transport Services"> */
-    .logo-link { text-decoration: none; display: flex; align-items: center; flex-shrink: 0; }
-    .logo-img-wrap { height: 40px; width: 168px; display: flex; align-items: center; }
-    .logo-placeholder {
-      width: 100%; height: 40px; background: var(--green-pale);
-      border: 1.5px dashed rgba(91,191,58,0.4); border-radius: 8px;
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-    }
-    .logo-placeholder span {
-      font-family: var(--font-head); font-size: 10.5px; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-dark);
-    }
-    .logo-img-wrap img { height: 40px; width: auto; display: block; object-fit: contain; }
-
-    /* Nav — bottom border slide-in */
-    .nav { display: flex; align-items: center; gap: 0; }
-    .nav a {
-      font-size: 14px; font-weight: 500; color: var(--ink-soft);
-      text-decoration: none; padding: 8px 16px;
-      position: relative; transition: color 0.22s; white-space: nowrap;
-    }
-    .nav a::after {
-      content: ''; position: absolute; bottom: 0; left: 50%; right: 50%;
-      height: 2.5px; background: var(--green); border-radius: 2px;
-      transition: left 0.28s cubic-bezier(.22,1,.36,1), right 0.28s cubic-bezier(.22,1,.36,1);
-    }
-    .nav a:hover { color: var(--green-dark); }
-    .nav a:hover::after { left: 12px; right: 12px; }
-    .nav a.active { color: var(--green-dark); font-weight: 600; }
-    .nav a.active::after { left: 12px; right: 12px; }
-    .nav-cta {
-      margin-left: 14px; font-family: var(--font-head); font-size: 13px; font-weight: 700;
-      background: var(--green); color: #fff !important;
-      padding: 10px 22px !important; border-radius: 100px !important;
-      border: none; cursor: pointer;
-      transition: background 0.2s, transform 0.2s !important;
-      flex-shrink: 0;
-    }
-    .nav-cta::after { display: none !important; }
-    .nav-cta:hover { background: var(--green-dark) !important; transform: scale(1.04) !important; }
-    .menu-toggle {
-      display: none; background: none; border: none;
-      cursor: pointer; padding: 6px; flex-direction: column; gap: 5px;
-    }
-    .menu-toggle span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; }
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --green:       #5bbf3a;
-      --green-dark:  #3a9e1f;
-      --green-dim:   rgba(91,191,58,0.14);
-      --green-pale:  #eaf7e4;
-      --ink:         #0e1a0a;
-      --ink-soft:    #3d4d38;
-      --muted:       #6b7c65;
-      --surface:     #ffffff;
-      --bg:          #f3f7f0;
-      --border:      rgba(91,191,58,0.22);
-      --font-head:   'Syne', sans-serif;
-      --font-body:   'DM Sans', sans-serif;
-    }
-
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--font-body); background: var(--bg); color: var(--ink); overflow-x: hidden; }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(22px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes slideDown {
-      from { transform: translateY(-100%); opacity: 0; }
-      to   { transform: translateY(0); opacity: 1; }
-    }
-
-        
-    
-    
-    
-    
-    
-    /* ── Nav — bottom border slide-in on hover/active ── */
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    /* ── Page hero ──────────────────────── */
-    .page-hero { background: var(--ink); padding: 72px 40px 100px; position: relative; overflow: hidden; }
-    .page-hero::before { content: ''; position: absolute; top: -160px; right: -80px; width: 560px; height: 560px; border-radius: 50%; border: 1.5px solid rgba(91,191,58,0.12); pointer-events: none; }
-    .page-hero::after { content: ''; position: absolute; bottom: -100px; left: 10%; width: 260px; height: 260px; border-radius: 50%; border: 1px solid rgba(91,191,58,0.1); pointer-events: none; }
-    .page-hero-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 1; }
-    .breadcrumb { font-size: 12px; color: rgba(255,255,255,0.35); margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
-    .breadcrumb a { color: var(--green); text-decoration: none; }
-    .page-hero h1 { font-family: var(--font-head); font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; color: #fff; line-height: 1.1; animation: fadeUp 0.55s 0.1s both; }
-    .page-hero h1 .accent { color: var(--green); }
-    .page-hero p { font-size: 15px; color: rgba(255,255,255,0.55); margin-top: 14px; line-height: 1.7; max-width: 500px; animation: fadeUp 0.55s 0.2s both; }
-
-    /* progress bar */
-    .progress-wrap { margin-top: 40px; animation: fadeUp 0.55s 0.3s both; }
-    .progress-steps { display: flex; align-items: center; gap: 0; max-width: 520px; }
-    .step-item { display: flex; flex-direction: column; align-items: center; gap: 8px; flex: 1; position: relative; }
-    .step-item:not(:last-child)::after { content: ''; position: absolute; top: 16px; left: calc(50% + 16px); width: calc(100% - 32px); height: 2px; background: rgba(255,255,255,0.12); transition: background 0.4s; }
-    .step-item.done:not(:last-child)::after, .step-item.active:not(:last-child)::after { background: var(--green); }
-    .step-dot { width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-family: var(--font-head); font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.4); transition: all 0.3s; position: relative; z-index: 1; }
-    .step-item.active .step-dot { background: var(--green); border-color: var(--green); color: #fff; box-shadow: 0 0 0 4px rgba(91,191,58,0.25); }
-    .step-item.done .step-dot { background: var(--green-dark); border-color: var(--green-dark); color: #fff; }
-    .step-label { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.3); text-align: center; transition: color 0.3s; }
-    .step-item.active .step-label { color: var(--green); }
-    .step-item.done .step-label { color: rgba(255,255,255,0.5); }
-
-    /* ── Wizard wrapper ─────────────────── */
-    .wizard-wrap { max-width: 860px; margin: -52px auto 80px; padding: 0 40px; position: relative; z-index: 10; }
-
-    /* ── Step card ──────────────────────── */
-    .step-card { background: var(--surface); border: 1.5px solid var(--border); border-radius: 24px; padding: 48px 44px; box-shadow: 0 8px 40px rgba(0,0,0,0.07); display: none; animation: fadeUp 0.4s both; }
-    .step-card.active { display: block; }
-    .step-card-head { margin-bottom: 36px; }
-    .step-card-head .eyebrow { font-family: var(--font-head); font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green); margin-bottom: 8px; }
-    .step-card-head h2 { font-family: var(--font-head); font-size: 1.6rem; font-weight: 800; color: var(--ink); line-height: 1.2; }
-    .step-card-head p { font-size: 14px; color: var(--muted); margin-top: 8px; line-height: 1.6; }
-
-    /* ── Asset picker grid ──────────────── */
-    .asset-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 36px; }
-    @media (max-width: 600px) { .asset-grid { grid-template-columns: 1fr; } }
-
-    .asset-option { border: 2px solid var(--border); border-radius: 16px; padding: 24px 20px; cursor: pointer; position: relative; transition: border-color 0.25s, background 0.25s, transform 0.25s, box-shadow 0.25s; display: flex; align-items: center; gap: 18px; background: var(--bg); }
-    .asset-option:hover { border-color: var(--green); background: var(--green-pale); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(91,191,58,0.12); }
-    .asset-option.selected { border-color: var(--green); background: var(--green-pale); box-shadow: 0 0 0 3px rgba(91,191,58,0.18); }
-
-    .asset-img-box { width: 58px; height: 58px; border-radius: 14px; background: var(--surface); display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: transform 0.25s; overflow: hidden; }
-    .asset-option:hover .asset-img-box, .asset-option.selected .asset-img-box { transform: scale(1.1) rotate(-3deg); }
-    .mini-placeholder { width: 100%; height: 100%; background: #d8e5d2; display: flex; align-items: center; justify-content: center; }
-    .mini-placeholder svg { width: 26px; height: 26px; color: #8aab80; }
-
-    .asset-info h4 { font-family: var(--font-head); font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
-    .asset-info p { font-size: 12px; color: var(--muted); line-height: 1.5; }
-    .asset-price { font-family: var(--font-head); font-size: 12.5px; font-weight: 700; color: var(--green-dark); margin-top: 6px; }
-
-    .asset-check { position: absolute; top: 14px; right: 14px; width: 22px; height: 22px; border-radius: 50%; background: var(--green); display: none; align-items: center; justify-content: center; }
-    .asset-check svg { width: 11px; height: 11px; }
-    .asset-option.selected .asset-check { display: flex; }
-
-    /* ── Tier selector ──────────────────── */
-    .tier-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
-    @media (max-width: 560px) { .tier-grid { grid-template-columns: 1fr; } }
-
-    .tier-option { border: 2px solid var(--border); border-radius: 16px; padding: 26px 22px; cursor: pointer; background: var(--bg); position: relative; transition: border-color 0.25s, background 0.25s, transform 0.25s, box-shadow 0.25s; }
-    .tier-option:hover { border-color: var(--green); background: var(--green-pale); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(91,191,58,0.12); }
-    .tier-option.selected { border-color: var(--green); background: var(--green-pale); box-shadow: 0 0 0 3px rgba(91,191,58,0.18); }
-    .tier-option .asset-check { display: none; }
-    .tier-option.selected .asset-check { display: flex; }
-
-    .tier-label { font-family: var(--font-head); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green-dark); margin-bottom: 8px; }
-    .tier-name { font-family: var(--font-head); font-size: 1rem; font-weight: 800; color: var(--ink); margin-bottom: 18px; line-height: 1.25; }
-    .tier-specs { display: flex; flex-direction: column; gap: 10px; }
-    .tier-spec-row { display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
-    .tier-spec-row .t-label { color: var(--muted); }
-    .tier-spec-row .t-val { font-family: var(--font-head); font-weight: 700; color: var(--ink); }
-    .tier-spec-row .t-val.green { color: var(--green-dark); }
-    .tier-badge { display: inline-block; margin-top: 16px; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; padding: 4px 12px; border-radius: 100px; background: rgba(91,191,58,0.1); color: var(--green-dark); border: 1px solid var(--border); }
-
-    /* ── Form fields ────────────────────── */
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
-    @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
-    .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
-    .field label { font-size: 11.5px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-soft); }
-    .field input, .field select, .field textarea { font-family: var(--font-body); font-size: 14px; color: var(--ink); background: var(--bg); border: 1.5px solid transparent; border-radius: 12px; padding: 13px 16px; outline: none; width: 100%; transition: border-color 0.2s, background 0.2s, box-shadow 0.2s; }
-    .field input::placeholder, .field textarea::placeholder { color: #b0bfaa; }
-    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--green); background: var(--surface); box-shadow: 0 0 0 3px rgba(91,191,58,0.12); }
-    .field textarea { height: 110px; resize: none; line-height: 1.6; }
-    .select-wrap { position: relative; }
-    .select-wrap select { appearance: none; cursor: pointer; }
-    .select-wrap::after { content: '▾'; position: absolute; right: 14px; top: 50%; transform: translateY(-50%); font-size: 12px; color: var(--muted); pointer-events: none; }
-
-    /* ── Summary card (dark) ────────────── */
-    .summary-card { background: var(--ink); border-radius: 18px; padding: 32px 28px; margin-bottom: 28px; position: relative; overflow: hidden; }
-    .summary-card::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; border-radius: 50%; border: 1.5px solid rgba(91,191,58,0.15); pointer-events: none; }
-    .summary-card h3 { font-family: var(--font-head); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green); margin-bottom: 22px; }
-    .summary-rows { display: flex; flex-direction: column; gap: 12px; }
-    .summary-row { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.07); padding-bottom: 12px; }
-    .summary-row:last-child { border-bottom: none; padding-bottom: 0; }
-    .summary-row .s-label { font-size: 13px; color: rgba(255,255,255,0.45); }
-    .summary-row .s-value { font-family: var(--font-head); font-size: 14px; font-weight: 700; color: #fff; }
-    .summary-row.highlight .s-value { color: var(--green); font-size: 1.4rem; }
-    .summary-note { font-size: 11.5px; color: rgba(255,255,255,0.25); margin-top: 16px; line-height: 1.6; text-align: center; }
-
-    /* ── Confirm checklist ──────────────── */
-    .confirm-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
-    .confirm-item { display: flex; align-items: flex-start; gap: 14px; padding: 18px 20px; border-radius: 14px; background: var(--bg); border: 1.5px solid var(--border); }
-    .confirm-item .ci-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--green-pale); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
-    .confirm-item .ci-body h4 { font-family: var(--font-head); font-size: 13.5px; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
-    .confirm-item .ci-body p { font-size: 12.5px; color: var(--muted); line-height: 1.5; }
-
-    /* ── Consent ────────────────────────── */
-    .consent-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 28px; }
-    .consent-row input[type=checkbox] { width: 18px; height: 18px; accent-color: var(--green); flex-shrink: 0; margin-top: 2px; cursor: pointer; }
-    .consent-row label { font-size: 13px; color: var(--muted); line-height: 1.6; cursor: pointer; }
-    .consent-row a { color: var(--green-dark); text-decoration: underline; }
-
-    /* ── Step nav ───────────────────────── */
-    .step-nav { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 8px; padding-top: 28px; border-top: 1.5px solid var(--border); }
-    .btn-prev { font-family: var(--font-head); font-size: 14px; font-weight: 700; background: transparent; color: var(--ink-soft); border: 1.5px solid var(--border); border-radius: 100px; padding: 13px 28px; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.22s; }
-    .btn-prev:hover { border-color: var(--green); color: var(--green-dark); background: var(--green-pale); }
-    .btn-prev svg { width: 14px; height: 14px; transition: transform 0.2s; }
-    .btn-prev:hover svg { transform: translateX(-3px); }
-    .btn-next { font-family: var(--font-head); font-size: 14px; font-weight: 700; background: var(--green); color: #fff; border: none; border-radius: 100px; padding: 14px 36px; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: background 0.25s, transform 0.2s, box-shadow 0.25s; box-shadow: 0 4px 20px rgba(91,191,58,0.35); }
-    .btn-next:hover { background: var(--green-dark); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(91,191,58,0.4); }
-    .btn-next svg { width: 15px; height: 15px; transition: transform 0.2s; }
-    .btn-next:hover svg { transform: translateX(4px); }
-    .btn-next:disabled { background: #c5d9be; box-shadow: none; cursor: not-allowed; transform: none; }
-
-    /* ── Success ────────────────────────── */
-    .success-screen { text-align: center; padding: 20px 0 12px; }
-    .success-icon { width: 88px; height: 88px; border-radius: 50%; background: var(--green-pale); margin: 0 auto 28px; display: flex; align-items: center; justify-content: center; animation: popIn 0.5s cubic-bezier(.22,1,.36,1) both; }
-    @keyframes popIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-    .success-icon svg { width: 44px; height: 44px; }
-    .success-screen h2 { font-family: var(--font-head); font-size: 1.8rem; font-weight: 800; color: var(--ink); margin-bottom: 12px; }
-    .success-screen p { font-size: 15px; color: var(--muted); max-width: 420px; margin: 0 auto 32px; line-height: 1.7; }
-    .success-ref { display: inline-flex; align-items: center; gap: 10px; background: var(--bg); border: 1.5px solid var(--border); border-radius: 12px; padding: 14px 24px; font-family: var(--font-head); font-size: 14px; font-weight: 700; color: var(--green-dark); margin-bottom: 36px; letter-spacing: 0.06em; }
-    .success-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .btn-outline-green { font-family: var(--font-head); font-size: 14px; font-weight: 700; background: transparent; color: var(--green-dark); border: 1.5px solid var(--green); border-radius: 100px; padding: 13px 28px; cursor: pointer; transition: background 0.22s, color 0.22s; }
-    .btn-outline-green:hover { background: var(--green); color: #fff; }
-
-    /* ── Trust strip ────────────────────── */
-    .trust-strip { max-width: 860px; margin: 0 auto 80px; padding: 0 40px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    @media (max-width: 660px) { .trust-strip { grid-template-columns: 1fr; } }
-    .trust-item { background: var(--surface); border: 1.5px solid var(--border); border-radius: 14px; padding: 20px 18px; display: flex; align-items: center; gap: 14px; animation: fadeUp 0.5s both; }
-    .trust-item:nth-child(1) { animation-delay: 0.1s; }
-    .trust-item:nth-child(2) { animation-delay: 0.2s; }
-    .trust-item:nth-child(3) { animation-delay: 0.3s; }
-    .trust-icon { width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0; background: var(--green-pale); display: flex; align-items: center; justify-content: center; }
-    .trust-icon svg { width: 20px; height: 20px; color: var(--green-dark); }
-    .trust-item h4 { font-family: var(--font-head); font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
-    .trust-item p { font-size: 12px; color: var(--muted); line-height: 1.5; }
-
-    
-    /* ── Footer ─────────────────────────────────────────── */
-    footer { background: var(--ink); padding: 64px 40px 0; }
-    .footer-top { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 52px; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    @media (max-width: 900px) { .footer-top { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 520px) { .footer-top { grid-template-columns: 1fr; } }
-
-    /* brand column spans full width of brand cell */
-    .footer-brand { display: flex; flex-direction: column; gap: 18px; }
-    .footer-logo-wrap { height: 38px; width: 160px; }
-    .footer-logo-placeholder {
-      width: 100%; height: 38px;
-      background: rgba(255,255,255,0.05);
-      border: 1.5px dashed rgba(255,255,255,0.14);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-    }
-    .footer-logo-placeholder span {
-      font-family: var(--font-head); font-size: 10px; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.2);
-    }
-    .footer-tagline { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.75; max-width: 280px; }
-
-    /* contact block */
-    .footer-contact-block { display: flex; flex-direction: column; gap: 10px; }
-    .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; }
-    .footer-contact-icon { width: 14px; height: 14px; flex-shrink: 0; color: var(--green); margin-top: 2px; }
-    .footer-contact-item a,
-    .footer-contact-item span { font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; line-height: 1.5; transition: color 0.2s; }
-    .footer-contact-item a:hover { color: var(--green); }
-
-    /* link columns */
-    .footer-links { display: contents; }
-    .footer-col h5 {
-      font-family: var(--font-head); font-size: 10.5px; font-weight: 700;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--green); margin-bottom: 16px;
-    }
-    .footer-col a {
-      display: block; font-size: 13px; color: rgba(255,255,255,0.45);
-      text-decoration: none; margin-bottom: 10px; transition: color 0.2s;
-    }
-    .footer-col a:hover { color: var(--green); }
-
-    /* bottom bar */
-    .footer-bottom {
-      max-width: 1100px; margin: 0 auto;
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 10px;
-      padding: 20px 0;
-      font-size: 12px; color: rgba(255,255,255,0.22);
-    }
-    .footer-bottom a { color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
-    .footer-bottom a:hover { color: var(--green); }
-    .footer-dot { margin: 0 6px; }
-
-    @media (max-width: 760px) {
-      footer { padding: 48px 20px 0; }
-      .footer-bottom { padding: 16px 0; }
-    }
-
-    /* ── Responsive ─────────────────────── */
-    @media (max-width: 760px) {
-      
-      
-      
-      
-      
-      
-      .nav a.active, 
-      
-      
-      .page-hero { padding: 56px 20px 88px; }
-      .wizard-wrap { padding: 0 20px; margin-bottom: 48px; }
-      .step-card { padding: 28px 22px; }
-      .trust-strip { padding: 0 20px; margin-bottom: 48px; }
-      footer { padding: 48px 20px 28px; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
+  <!-- Top Bar -->
   <div class="top-bar">
-    <span> +234 800 000 0000</span>
-    <span> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a4cdcac2cbe4c1cacdc3c9c5d0d6c5cad7d4cbd6d08ac7cbc9">[email&#160;protected]</a></span>
-    <span> Abuja, Nigeria</span>
+    <div class="top-bar-item">
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M14 10.67v2a1.33 1.33 0 01-1.45 1.33 13.19 13.19 0 01-5.75-2.05 13 13 0 01-4-4A13.19 13.19 0 01.75 2.45 1.33 1.33 0 012.07 1h2a1.33 1.33 0 011.33 1.14 8.56 8.56 0 00.47 1.88 1.33 1.33 0 01-.3 1.41L4.59 6.4a10.67 10.67 0 004 4l.97-.97a1.33 1.33 0 011.41-.3 8.56 8.56 0 001.88.47A1.33 1.33 0 0114 10.67z"/></svg>
+      +234 800 000 0000
+    </div>
+    <div class="top-bar-item">
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="1" y="3" width="14" height="10" rx="1.5"/><path d="M1 3l7 5.5L15 3"/></svg>
+      info@enigmatransport.com
+    </div>
+    <div class="top-bar-item">
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 1.5A4.5 4.5 0 0112.5 6c0 3.5-4.5 8.5-4.5 8.5S3.5 9.5 3.5 6A4.5 4.5 0 018 1.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+      Abuja, Nigeria
+    </div>
   </div>
 
-    <!-- Header -->
-  <header class="header">
-    <a href="index.html" class="logo-link">
-      <div class="logo-img-wrap">
-        <!--
-          LOGO PLACEHOLDER — replace this entire div with:
-          <img src="images/logo.png" alt="Enigma Transport Services">
-        -->
-        <div class="logo-placeholder">
-          <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><rect x="1" y="5" width="16" height="10" rx="2" stroke="#3a9e1f" stroke-width="1.5"/><path d="M5 5V4a4 4 0 018 0v1" stroke="#3a9e1f" stroke-width="1.5" stroke-linecap="round"/></svg>
-          <span>logo.png</span>
-        </div>
-      </div>
-    </a>
+  <!-- Header -->
+ <header class="header">
+  <a href="index.html" class="logo-link">
+    <div class="logo-img-wrap">
+      <img src="images/transport_logo.png" alt="Enigma Transport Services">
+    </div>
+  </a>
+  <button class="menu-toggle" aria-label="Toggle menu"
+    onclick="this.nextElementSibling.classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Contact</a>
+    <a href="quote.html" class="nav-cta">Get a Quote</a>
+  </nav>
+</header>
 
-    <button class="menu-toggle" aria-label="Toggle menu"
-      onclick="this.nextElementSibling.classList.toggle('open')">
-      <span></span><span></span><span></span>
-    </button>
-
-    <nav class="nav">
-      <a href="index.html" >Home</a>
-      <a href="about.html" >About</a>
-      <a href="services.html" >Services</a>
-      <a href="contact.html" >Contact</a>
-      <a href="quote.html" class="nav-cta">Get a Quote</a>
-    </nav>
-  </header>
-
+  <!-- Page Hero -->
   <section class="page-hero">
+    <div class="hero-ring-extra"></div>
+    <div class="hero-glow"></div>
     <div class="page-hero-inner">
       <div class="breadcrumb">
-        <a href="index.html">Home</a> <span>›</span> <span>Get a Quote</span>
+        <a href="index.html">Home</a>
+        <svg width="6" height="10" viewBox="0 0 6 10" fill="none"><path d="M1 1l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Get a Quote</span>
       </div>
-      <h1>Request your <span class="accent">hire purchase</span><br>plan.</h1>
-      <p>Choose your asset and tier, then leave your details. We'll call you within one business day to confirm the plan, walk you through the agreement, and answer any questions.</p>
+      <h1>Request your <span class="accent">hire&nbsp;purchase</span><br>plan today.</h1>
+      <p>Choose your asset and tier, then leave your details. We'll call you within one business day to walk you through the agreement and answer any questions — no commitment yet.</p>
 
       <div class="progress-wrap">
         <div class="progress-steps" id="progressSteps">
-          <div class="step-item active" data-step="1"><div class="step-dot">1</div><span class="step-label">Asset</span></div>
-          <div class="step-item" data-step="2"><div class="step-dot">2</div><span class="step-label">Tier</span></div>
-          <div class="step-item" data-step="3"><div class="step-dot">3</div><span class="step-label">Details</span></div>
-          <div class="step-item" data-step="4"><div class="step-dot">4</div><span class="step-label">Confirm</span></div>
+          <div class="step-item active" data-step="1">
+            <div class="step-dot">1</div>
+            <span class="step-label">Asset</span>
+          </div>
+          <div class="step-item" data-step="2">
+            <div class="step-dot">2</div>
+            <span class="step-label">Tier</span>
+          </div>
+          <div class="step-item" data-step="3">
+            <div class="step-dot">3</div>
+            <span class="step-label">Details</span>
+          </div>
+          <div class="step-item" data-step="4">
+            <div class="step-dot">4</div>
+            <span class="step-label">Confirm</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Wizard -->
   <div class="wizard-wrap">
 
-    <!-- Step 1: Asset -->
+    <!-- ── Step 1: Asset ─────────────────────── -->
     <div class="step-card active" id="step1">
       <div class="step-card-head">
         <p class="eyebrow">Step 1 of 4</p>
         <h2>Which asset do you want to own?</h2>
-        <p>All four assets are available. Note that our current active deployment is wheelbarrows — higher-tier assets are sourced and deployed upon confirmed request.</p>
+        <p>All five assets are available. Wheelbarrows are actively deployed. Higher-tier assets are sourced and delivered upon confirmed request and deposit.</p>
       </div>
+      <div class="card-divider"></div>
 
       <div class="asset-grid">
         <div class="asset-option" onclick="selectAsset(this,'wheelbarrow')">
           <div class="asset-img-box">
-            <!-- REPLACE: <img src="images/wheelbarrow.jpg" style="width:100%;height:100%;object-fit:cover;"> -->
-            <div class="mini-placeholder"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="12" width="16" height="9" rx="1.5"/><circle cx="9" cy="23" r="3.5"/><line x1="3" y1="12" x2="1" y2="7"/><line x1="19" y1="12" x2="21" y2="7"/><line x1="1" y1="7" x2="21" y2="7"/></svg></div>
+            <div class="mini-placeholder">
+              <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="16" height="9" rx="1.5"/><circle cx="9" cy="22.5" r="3.5"/><line x1="3" y1="11" x2="1" y2="6.5"/><line x1="19" y1="11" x2="21" y2="6.5"/><line x1="1" y1="6.5" x2="21" y2="6.5"/></svg>
+            </div>
           </div>
           <div class="asset-info">
             <h4>Wheelbarrow</h4>
-            <p>Construction, farming & micro-trade</p>
+            <p>Construction, farming &amp; micro-trade</p>
             <div class="asset-price">Contract from ₦65,000</div>
-          </div>
-          <div class="asset-check"><svg viewBox="0 0 11 11" fill="none"><path d="M2 5.5l2.5 2.5 4.5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        </div>
-
-        <div class="asset-option" onclick="selectAsset(this,'keke')">
-          <div class="asset-img-box">
-            <!-- REPLACE: <img src="images/keke.jpg" style="width:100%;height:100%;object-fit:cover;"> -->
-            <div class="mini-placeholder"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M5 11l4-7h10l4 7"/><circle cx="8" cy="23" r="3"/><circle cx="20" cy="23" r="3"/></svg></div>
-          </div>
-          <div class="asset-info">
-            <h4>Keke Napep</h4>
-            <p>City routes &amp; market trips — available on request</p>
-            <div class="asset-price">Contract from ₦5,400,000</div>
           </div>
           <div class="asset-check"><svg viewBox="0 0 11 11" fill="none"><path d="M2 5.5l2.5 2.5 4.5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </div>
 
         <div class="asset-option" onclick="selectAsset(this,'motorbike')">
           <div class="asset-img-box">
-            <!-- REPLACE: <img src="images/motorcycle.jpg" style="width:100%;height:100%;object-fit:cover;"> -->
-            <div class="mini-placeholder"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="21" r="4.5"/><circle cx="21" cy="21" r="4.5"/><path d="M7 21L12 11h8l4 6"/><path d="M12 11l2-5 5 2"/></svg></div>
+            <div class="mini-placeholder">
+              <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="21" r="4.5"/><circle cx="21" cy="21" r="4.5"/><path d="M7 21L12 11h8l4 6"/><path d="M12 11l2-5 5 2"/></svg>
+            </div>
           </div>
           <div class="asset-info">
             <h4>Motorbike</h4>
-            <p>Logistics, dispatch & delivery</p>
+            <p>Logistics, dispatch &amp; delivery</p>
             <div class="asset-price">Contract from ₦1,820,000</div>
+            <div class="asset-badge-req">Available on Request</div>
           </div>
           <div class="asset-check"><svg viewBox="0 0 11 11" fill="none"><path d="M2 5.5l2.5 2.5 4.5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </div>
 
-        <div class="asset-option" onclick="selectAsset(this,'automobile')">
+        <div class="asset-option" onclick="selectAsset(this,'keke')">
           <div class="asset-img-box">
-            <!-- REPLACE: <img src="images/car.jpg" style="width:100%;height:100%;object-fit:cover;"> -->
-            <div class="mini-placeholder"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="14" width="24" height="9" rx="2"/><path d="M4 14l4-7h12l4 7"/><rect x="6" y="9" width="16" height="5" rx="1"/><circle cx="7" cy="25" r="2.5"/><circle cx="21" cy="25" r="2.5"/></svg></div>
+            <div class="mini-placeholder">
+              <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M5 11l4-7h10l4 7"/><circle cx="8" cy="23" r="3"/><circle cx="20" cy="23" r="3"/></svg>
+            </div>
           </div>
           <div class="asset-info">
-            <h4>Used Automobile</h4>
-            <p>Ride-hailing & commercial hire</p>
-            <div class="asset-price">Contract value varies by model</div>
+            <h4>Keke Napep</h4>
+            <p>City routes &amp; market trips</p>
+            <div class="asset-price">Contract from ₦5,400,000</div>
+            <div class="asset-badge-req">Available on Request</div>
           </div>
           <div class="asset-check"><svg viewBox="0 0 11 11" fill="none"><path d="M2 5.5l2.5 2.5 4.5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </div>
+
+        <div class="asset-option" onclick="selectAsset(this,'keke-truck')">
+          <div class="asset-img-box">
+            <div class="mini-placeholder">
+              <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="11" width="26" height="10" rx="2"/><path d="M2 11l3-7h16l3 7"/><rect x="5" y="7" width="14" height="4" rx="1"/><circle cx="6" cy="23" r="2.5"/><circle cx="22" cy="23" r="2.5"/></svg>
+            </div>
+          </div>
+          <div class="asset-info">
+            <h4>Keke Truck</h4>
+            <p>Cargo haulage &amp; goods transport</p>
+            <div class="asset-price">Contract from ₦5,400,000</div>
+            <div class="asset-badge-req">Available on Request</div>
+          </div>
+          <div class="asset-check"><svg viewBox="0 0 11 11" fill="none"><path d="M2 5.5l2.5 2.5 4.5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+      </div>
+
+      <!-- Automobile — spans full width -->
+      <div class="asset-option" style="margin-bottom:36px;" onclick="selectAsset(this,'automobile')">
+        <div class="asset-img-box">
+          <div class="mini-placeholder">
+            <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="14" width="24" height="9" rx="2"/><path d="M4 14l4-7h12l4 7"/><rect x="6" y="9" width="16" height="5" rx="1"/><circle cx="7" cy="25" r="2.5"/><circle cx="21" cy="25" r="2.5"/></svg>
+          </div>
+        </div>
+        <div class="asset-info">
+          <h4>Used Automobile</h4>
+          <p>Ride-hailing &amp; commercial hire — contract value varies by model, confirmed on call</p>
+          <div class="asset-badge-req">Available on Request</div>
+        </div>
+        <div class="asset-check"><svg viewBox="0 0 11 11" fill="none"><path d="M2 5.5l2.5 2.5 4.5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       </div>
 
       <div class="step-nav">
         <span></span>
         <button class="btn-next" id="step1Next" disabled onclick="goToStep(2)">
-          Continue <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="btn-label">Continue</span>
+          <div class="spinner"></div>
+          <svg class="arrow" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
     </div>
 
-    <!-- Step 2: Tier -->
+    <!-- ── Step 2: Tier ─────────────────────── -->
     <div class="step-card" id="step2">
       <div class="step-card-head">
         <p class="eyebrow">Step 2 of 4</p>
         <h2>Choose your plan tier</h2>
-        <p>Both tiers lead to full ownership. Tier A requires a higher upfront deposit with a shorter contract. Tier B has a lower deposit with a longer repayment period and higher total ROI.</p>
+        <p>Both tiers lead to full ownership. Tier A has a higher deposit and shorter contract. Tier B has a lower deposit with a longer repayment window and higher total return.</p>
       </div>
+      <div class="card-divider"></div>
 
-      <div class="tier-grid" id="tierGrid">
-        <!-- Populated by JS -->
-      </div>
+      <div class="tier-grid" id="tierGrid"><!-- populated by JS --></div>
 
       <div class="step-nav">
         <button class="btn-prev" onclick="goToStep(1)">
-          <svg viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 12L3 8l4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Back
+          <svg viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 12L3 8l4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Back
         </button>
         <button class="btn-next" id="step2Next" disabled onclick="goToStep(3)">
-          Continue <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="btn-label">Continue</span>
+          <div class="spinner"></div>
+          <svg class="arrow" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
     </div>
 
-    <!-- Step 3: Details -->
+    <!-- ── Step 3: Details ──────────────────── -->
     <div class="step-card" id="step3">
       <div class="step-card-head">
         <p class="eyebrow">Step 3 of 4</p>
         <h2>Your details</h2>
-        <p>We use these details to prepare your personalised quote and reach you for a verification call. Your information is never shared with third parties and is used solely for the purpose of processing your hire purchase request.</p>
+        <p>We use these details to prepare your personalised quote and reach you for a verification call. Your information is never shared with third parties.</p>
+      </div>
+      <div class="card-divider"></div>
+
+      <p class="form-section-label">Personal Information</p>
+      <div class="form-row">
+        <div class="field">
+          <label>First Name <span class="req">*</span></label>
+          <input type="text" id="firstName" placeholder="e.g. Amaka" required/>
+          <span class="field-error" id="err-firstName">Please enter your first name.</span>
+        </div>
+        <div class="field">
+          <label>Last Name <span class="req">*</span></label>
+          <input type="text" id="lastName" placeholder="e.g. Okonkwo" required/>
+          <span class="field-error" id="err-lastName">Please enter your last name.</span>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label>Phone Number <span class="req">*</span></label>
+          <input type="tel" id="phone" placeholder="+234 800 000 0000" required/>
+          <span class="field-error" id="err-phone">Please enter a valid phone number.</span>
+        </div>
+        <div class="field">
+          <label>Email Address</label>
+          <input type="email" id="email" placeholder="you@example.com"/>
+        </div>
       </div>
 
+      <p class="form-section-label">Background</p>
       <div class="form-row">
-        <div class="field"><label>First Name</label><input type="text" placeholder="e.g. Amaka" required/></div>
-        <div class="field"><label>Last Name</label><input type="text" placeholder="e.g. Okonkwo" required/></div>
-      </div>
-      <div class="form-row">
-        <div class="field"><label>Phone Number</label><input type="tel" placeholder="+234 800 000 0000" required/></div>
-        <div class="field"><label>Email Address</label><input type="email" placeholder="you@example.com"/></div>
-      </div>
-      <div class="form-row">
-        <div class="field"><label>Occupation / Business</label><input type="text" placeholder="e.g. Uber Driver, Farmer"/></div>
         <div class="field">
-          <label>State of Residence</label>
+          <label>Occupation / Business</label>
+          <input type="text" id="occupation" placeholder="e.g. Uber Driver, Farmer"/>
+        </div>
+        <div class="field">
+          <label>State of Residence <span class="req">*</span></label>
           <div class="select-wrap">
-            <select>
+            <select id="state" required>
               <option value="" disabled selected>Select state…</option>
               <option>Abuja (FCT)</option><option>Lagos</option><option>Kano</option>
               <option>Rivers</option><option>Oyo</option><option>Kaduna</option>
               <option>Anambra</option><option>Enugu</option><option>Delta</option><option>Other</option>
             </select>
           </div>
+          <span class="field-error" id="err-state">Please select your state.</span>
         </div>
       </div>
       <div class="field">
         <label>How did you hear about us?</label>
         <div class="select-wrap">
-          <select>
+          <select id="source">
             <option value="" disabled selected>Select an option…</option>
             <option>WhatsApp</option><option>Facebook / Instagram</option>
             <option>Friend or Family</option><option>Radio / TV</option>
@@ -548,36 +270,39 @@
         </div>
       </div>
       <div class="field">
-        <label>Any additional notes? (optional)</label>
-        <textarea placeholder="Tell us anything else that may help us prepare your quote…"></textarea>
+        <label>Additional Notes (optional)</label>
+        <textarea id="notes" placeholder="Tell us anything else that may help us prepare your quote…"></textarea>
       </div>
 
       <div class="step-nav">
         <button class="btn-prev" onclick="goToStep(2)">
-          <svg viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 12L3 8l4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Back
+          <svg viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 12L3 8l4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Back
         </button>
-        <button class="btn-next" onclick="goToStep(4)">
-          Review Quote <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <button class="btn-next" onclick="validateAndNext()">
+          <span class="btn-label">Review Quote</span>
+          <div class="spinner"></div>
+          <svg class="arrow" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
     </div>
 
-    <!-- Step 4: Confirm -->
+    <!-- ── Step 4: Confirm ──────────────────── -->
     <div class="step-card" id="step4">
       <div class="step-card-head">
         <p class="eyebrow">Step 4 of 4</p>
-        <h2>Review & Submit</h2>
-        <p>Check your details below. Submitting this form does not commit you to anything — our team will call to confirm everything before any agreement is signed.</p>
+        <h2>Review &amp; Submit</h2>
+        <p>Check your quote below. Submitting does not commit you to anything — our team will call to confirm everything before any agreement is signed.</p>
       </div>
+      <div class="card-divider"></div>
 
       <div class="summary-card">
-        <h3>Your Quote Summary</h3>
+        <h3>Quote Summary</h3>
         <div class="summary-rows">
           <div class="summary-row"><span class="s-label">Asset</span><span class="s-value" id="final-asset">—</span></div>
           <div class="summary-row"><span class="s-label">Plan Tier</span><span class="s-value" id="final-tier">—</span></div>
-          <div class="summary-row"><span class="s-label">Contract Value</span><span class="s-value" id="final-price">—</span></div>
           <div class="summary-row"><span class="s-label">Total Contract Value</span><span class="s-value" id="final-contract">—</span></div>
-          <div class="summary-row"><span class="s-label">Initial Deposit (Day-1)</span><span class="s-value" id="final-deposit">—</span></div>
+          <div class="summary-row"><span class="s-label">Initial Deposit (Day 1)</span><span class="s-value" id="final-deposit">—</span></div>
           <div class="summary-row"><span class="s-label">Contract Duration</span><span class="s-value" id="final-duration">—</span></div>
           <div class="summary-row highlight"><span class="s-label">Weekly Remittance</span><span class="s-value" id="final-weekly">—</span></div>
         </div>
@@ -586,64 +311,83 @@
 
       <div class="confirm-list">
         <div class="confirm-item">
-          <div class="ci-icon"></div>
-          <div class="ci-body"><h4>Verification Call</h4><p>We call you within one business day to confirm your details, go through the plan, and answer any questions. No obligation at this stage.</p></div>
+          <div class="ci-num">1</div>
+          <div class="ci-body">
+            <h4>Verification Call</h4>
+            <p>We call within one business day to confirm your details, walk through the plan, and answer any questions. No obligation at this stage.</p>
+          </div>
         </div>
         <div class="confirm-item">
-          <div class="ci-icon"></div>
-          <div class="ci-body"><h4>Guarantor Requirement</h4><p>To proceed, you'll need one guarantor — a gainfully employed professional, established business owner, or recognised community leader — who signs a Deed of Indemnity for the full contract value.</p></div>
+          <div class="ci-num">2</div>
+          <div class="ci-body">
+            <h4>Guarantor Requirement</h4>
+            <p>You'll need one guarantor — a gainfully employed professional, established business owner, or recognised community leader — who signs a Deed of Indemnity for the full contract value.</p>
+          </div>
         </div>
         <div class="confirm-item">
-          <div class="ci-icon"></div>
-          <div class="ci-body"><h4>Sign & Pay Deposit</h4><p>You and your guarantor sign the hire purchase agreement. You then pay your initial deposit. At this point the asset is secured and sourcing begins.</p></div>
+          <div class="ci-num">3</div>
+          <div class="ci-body">
+            <h4>Sign &amp; Pay Deposit</h4>
+            <p>You and your guarantor sign the hire purchase agreement. You pay the initial deposit. The asset is then secured and sourcing begins.</p>
+          </div>
         </div>
         <div class="confirm-item">
-          <div class="ci-icon"></div>
-          <div class="ci-body"><h4>Asset Delivery</h4><p>Your asset is sourced, vetted, and delivered — fitted with GPS tracking where applicable. You start your weekly remittances from the agreed date.</p></div>
+          <div class="ci-num">4</div>
+          <div class="ci-body">
+            <h4>Asset Delivery</h4>
+            <p>Your asset is sourced, vetted, and delivered — fitted with GPS tracking where applicable. Weekly remittances begin from the agreed date.</p>
+          </div>
         </div>
       </div>
 
       <div class="consent-row">
         <input type="checkbox" id="consent" onchange="toggleSubmit()">
         <label for="consent">
-          I agree to Enigma Transport's <a href="#">Terms & Conditions</a> and understand that a guarantor is required to complete this plan. I consent to being contacted to discuss this quote. This is not a binding commitment.
+          I agree to Enigma Transport's <a href="terms.html">Terms &amp; Conditions</a> and understand that a guarantor is required to complete this plan. I consent to being contacted to discuss this quote. This is not a binding commitment.
         </label>
       </div>
 
       <div class="step-nav">
         <button class="btn-prev" onclick="goToStep(3)">
-          <svg viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 12L3 8l4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Back
+          <svg viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 12L3 8l4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Back
         </button>
         <button class="btn-next" id="submitBtn" disabled onclick="submitQuote()">
-          Submit Quote Request <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="btn-label">Submit Quote Request</span>
+          <div class="spinner"></div>
+          <svg class="arrow" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
     </div>
 
-    <!-- Step 5: Success -->
+    <!-- ── Step 5: Success ──────────────────── -->
     <div class="step-card" id="step5">
       <div class="success-screen">
         <div class="success-icon">
-          <svg viewBox="0 0 44 44" fill="none">
-            <circle cx="22" cy="22" r="22" fill="#5bbf3a" opacity=".18"/>
-            <path d="M12 22l7 7 13-14" stroke="#3a9e1f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <svg viewBox="0 0 46 46" fill="none">
+            <circle cx="23" cy="23" r="23" fill="#5bbf3a" opacity=".15"/>
+            <path d="M13 23l7 7 13-14" stroke="#3a9e1f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
         <h2>Request Received</h2>
         <p>We'll call you within one business day to go through your plan, confirm availability, and answer any questions. No commitment is made until you sign the agreement.</p>
-        <div class="success-ref">Reference: ETS-<span id="refCode">000000</span></div>
+        <div class="success-ref">
+          <span class="success-ref-label">Reference</span>
+          ETS-<span id="refCode">000000</span>
+        </div>
         <div class="success-actions">
           <button class="btn-next" onclick="window.location.href='index.html'">
-            Back to Home <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="btn-label">Back to Home</span>
+            <svg class="arrow" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
           <button class="btn-outline-green" onclick="window.location.href='contact.html'">Contact Us</button>
         </div>
       </div>
     </div>
 
-  </div>
+  </div><!-- /wizard-wrap -->
 
-  <!-- Trust strip -->
+  <!-- Trust Strip -->
   <div class="trust-strip">
     <div class="trust-item">
       <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
@@ -655,132 +399,116 @@
     </div>
     <div class="trust-item">
       <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg></div>
-      <div><h4>No Obligation</h4><p>Submitting this form does not commit you to a plan. No contract exists until it is signed.</p></div>
+      <div><h4>No Obligation</h4><p>No contract exists until it is signed by both parties.</p></div>
     </div>
   </div>
 
-    <!-- Footer -->
-  <footer>
-    <div class="footer-top">
-      <div class="footer-brand">
-        <!--
-          FOOTER LOGO PLACEHOLDER
-          Replace the .footer-logo-placeholder div with:
-          <img src="images/logo-white.png" alt="Enigma Transport Services" style="height:36px;width:auto;display:block;">
-        -->
-        <div class="footer-logo-wrap">
-          <div class="footer-logo-placeholder">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-              <rect x="1" y="5" width="16" height="10" rx="2" stroke="rgba(255,255,255,0.3)" stroke-width="1.4"/>
-              <path d="M5 5V4a4 4 0 018 0v1" stroke="rgba(255,255,255,0.3)" stroke-width="1.4" stroke-linecap="round"/>
-            </svg>
-            <span>logo-white.png</span>
-          </div>
-        </div>
-        <p class="footer-tagline">A structured hire purchase platform helping transport workers in Abuja own their assets. Founded 2026.</p>
-        <div class="footer-contact-block">
-          <div class="footer-contact-item">
-            <!--
-              ICON PLACEHOLDER — replace svg with your phone icon image:
-              <img src="images/icon-phone.svg" alt="" width="14" height="14">
-            -->
-            <svg class="footer-contact-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 10.67v2a1.33 1.33 0 01-1.45 1.33 13.19 13.19 0 01-5.75-2.05 13 13 0 01-4-4A13.19 13.19 0 01.75 2.45 1.33 1.33 0 012.07 1h2a1.33 1.33 0 011.33 1.14 8.56 8.56 0 00.47 1.88 1.33 1.33 0 01-.3 1.41L4.59 6.4a10.67 10.67 0 004 4l.97-.97a1.33 1.33 0 011.41-.3 8.56 8.56 0 001.88.47A1.33 1.33 0 0114 10.67z"/></svg>
-            <a href="tel:+2348000000000">+234 800 000 0000</a>
-          </div>
-          <div class="footer-contact-item">
-            <!--
-              ICON PLACEHOLDER — replace svg with your email icon image:
-              <img src="images/icon-email.svg" alt="" width="14" height="14">
-            -->
-            <svg class="footer-contact-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="14" height="10" rx="1.5"/><path d="M1 3l7 5.5L15 3"/></svg>
-            <a href="/cdn-cgi/l/email-protection#8be2e5ede4cbeee5e2ece6eafff9eae5f8fbe4f9ffa5e8e4e6"><span class="__cf_email__" data-cfemail="6900070f06290c07000e04081d1b08071a19061b1d470a0604">[email&#160;protected]</span></a>
-          </div>
-          <div class="footer-contact-item">
-            <!--
-              ICON PLACEHOLDER — replace svg with your location icon image:
-              <img src="images/icon-location.svg" alt="" width="14" height="14">
-            -->
-            <svg class="footer-contact-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1.5A4.5 4.5 0 0112.5 6c0 3.5-4.5 8.5-4.5 8.5S3.5 9.5 3.5 6A4.5 4.5 0 018 1.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
-            <span>8A Thaba Tseka Street, Wuse 2, Abuja</span>
-          </div>
-        </div>
+  <!-- Footer -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo-wrap">
+        <img src="images/transport_logo.png" alt="Enigma Transport Services">
       </div>
-
-      <div class="footer-links">
-        <div class="footer-col">
-          <h5>Company</h5>
-          <a href="index.html">Home</a>
-          <a href="about.html">About Us</a>
-          <a href="services.html">Services</a>
-          <a href="contact.html">Contact</a>
+      <p class="footer-tagline">A structured hire purchase platform helping transport workers in Abuja own their assets. Founded 2026.</p>
+      <div class="footer-contact-block">
+        <div class="footer-contact-item">
+          <svg class="footer-contact-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 10.67v2a1.33 1.33 0 01-1.45 1.33 13.19 13.19 0 01-5.75-2.05 13 13 0 01-4-4A13.19 13.19 0 01.75 2.45 1.33 1.33 0 012.07 1h2a1.33 1.33 0 011.33 1.14 8.56 8.56 0 00.47 1.88 1.33 1.33 0 01-.3 1.41L4.59 6.4a10.67 10.67 0 004 4l.97-.97a1.33 1.33 0 011.41-.3 8.56 8.56 0 001.88.47A1.33 1.33 0 0114 10.67z"/></svg>
+          <a href="tel:+2348000000000">+234 800 000 0000</a>
         </div>
-        <div class="footer-col">
-          <h5>Ownership Plans</h5>
-          <a href="plans.html#wheelbarrow">Wheelbarrow</a>
-          <a href="plans.html#keke">Keke Napep</a>
-          <a href="plans.html#motorbike">Motorbike</a>
-          <a href="plans.html#automobile">Used Automobile</a>
-          <a href="plans.html#tiers">Tier A vs Tier B</a>
+        <div class="footer-contact-item">
+          <svg class="footer-contact-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="14" height="10" rx="1.5"/><path d="M1 3l7 5.5L15 3"/></svg>
+          <a href="mailto:info@enigmatransport.com">info@enigmatransport.com</a>
         </div>
-        <div class="footer-col">
-          <h5>Legal</h5>
-          <a href="terms.html">Terms &amp; Conditions</a>
-          <a href="contact.html">Privacy Policy</a>
-          <a href="quote.html">Get a Quote</a>
+        <div class="footer-contact-item">
+          <svg class="footer-contact-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1.5A4.5 4.5 0 0112.5 6c0 3.5-4.5 8.5-4.5 8.5S3.5 9.5 3.5 6A4.5 4.5 0 018 1.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+          <span>8A Thaba Tseka Street, Wuse 2, Abuja</span>
         </div>
       </div>
     </div>
-
-    <div class="footer-bottom">
-      <span>&copy; 2026 Enigma Transport Services. All rights reserved.</span>
-      <span>
-        <a href="terms.html">Terms &amp; Conditions</a>
-        <span class="footer-dot">&middot;</span>
-        <a href="contact.html">Privacy Policy</a>
-      </span>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
     </div>
-  </footer>
-
- <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-
-  <script>
-    /* ── Exact figures from business plan ──────────────── */
+    <div class="footer-col">
+      <h5>Ownership Plans</h5>
+      <a href="plans.html#wheelbarrow">Wheelbarrow</a>
+      <a href="plans.html#keke">Keke Napep</a>
+      <a href="plans.html#motorbike">Motorbike</a>
+      <a href="plans.html#automobile">Used Automobile</a>
+      <a href="plans.html#tiers">Tier A vs Tier B</a>
+    </div>
+    <div class="footer-col">
+      <h5>Legal</h5>
+      <a href="terms.html">Terms &amp; Conditions</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="quote.html">Get a Quote</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Enigma Transport Services. All rights reserved.</span>
+    <span>
+      <a href="terms.html">Terms &amp; Conditions</a>
+      <span class="footer-dot">&middot;</span>
+      <a href="privacy.html">Privacy Policy</a>
+    </span>
+  </div>
+</footer>
+<script>
+    /* ── Asset data (all 5 assets, exact figures) ──────── */
     const ASSETS = {
       wheelbarrow: {
-        label: 'Wheelbarrow', purchasePrice: 'From ₦65,000 (Tier A contract)',
+        label: 'Wheelbarrow',
+        purchasePrice: 'From ₦65,000',
         tiers: {
-          A: { deposit: 20000, contractValue: 65000, roi: '44.44%', weekly: 2050, duration: '5 Months (22 Weeks)' },
-          B: { deposit: 15000, contractValue: 67500, roi: '50%', weekly: 1500, duration: '8 Months (35 Weeks)' }
-        }
-      },
-      keke: {
-        label: 'Keke Napep (Tricycle)', purchasePrice: 'From ₦5,400,000 (Tier A contract)',
-        tiers: {
-          A: { deposit: 1400000, contractValue: 5400000, roi: '35%', weekly: 77000, duration: '12 Months (52 Weeks)' },
-          B: { deposit: 1000000, contractValue: 5600000, roi: '40%', weekly: 60500, duration: '18 Months (76 Weeks)' }
+          A: { deposit: 20000,   contractValue: 65000,   roi: '44.44%', weekly: 2050,   duration: '5 Months (22 Weeks)' },
+          B: { deposit: 15000,   contractValue: 67500,   roi: '50%',    weekly: 1500,   duration: '8 Months (35 Weeks)' }
         }
       },
       motorbike: {
-        label: 'Motorbike', purchasePrice: 'From ₦1,820,000 (Tier A contract)',
+        label: 'Motorbike',
+        purchasePrice: 'From ₦1,820,000',
         tiers: {
-          A: { deposit: 520000, contractValue: 1820000, roi: '40%', weekly: 30250, duration: '10 Months (43 Weeks)' },
-          B: { deposit: 350000, contractValue: 1885000, roi: '45%', weekly: 25600, duration: '14 Months (60 Weeks)' }
+          A: { deposit: 520000,  contractValue: 1820000, roi: '40%',    weekly: 30250,  duration: '10 Months (43 Weeks)' },
+          B: { deposit: 350000,  contractValue: 1885000, roi: '45%',    weekly: 25600,  duration: '14 Months (60 Weeks)' }
+        }
+      },
+      keke: {
+        label: 'Keke Napep',
+        purchasePrice: 'From ₦5,400,000',
+        tiers: {
+          A: { deposit: 1400000, contractValue: 5400000, roi: '35%',    weekly: 77000,  duration: '12 Months (52 Weeks)' },
+          B: { deposit: 1000000, contractValue: 5600000, roi: '40%',    weekly: 60500,  duration: '18 Months (76 Weeks)' }
+        }
+      },
+      'keke-truck': {
+        label: 'Keke Truck',
+        purchasePrice: 'From ₦5,400,000',
+        tiers: {
+          A: { deposit: 1400000, contractValue: 5400000, roi: '35%',    weekly: 77000,  duration: '12 Months (52 Weeks)' },
+          B: { deposit: 1000000, contractValue: 5600000, roi: '40%',    weekly: 60500,  duration: '18 Months (76 Weeks)' }
         }
       },
       automobile: {
-        label: 'Used Automobile', purchasePrice: 'Varies by model (confirmed on call)',
+        label: 'Used Automobile',
+        purchasePrice: 'Varies by model (confirmed on call)',
         tiers: {
-          A: { deposit: 2000000, contractValue: 8800000, roi: '25.7%', weekly: 113500, duration: '14 Months (60 Weeks)' },
-          B: { deposit: 1500000, contractValue: 9100000, roi: '30%', weekly: 97500, duration: '18 Months (78 Weeks)' }
+          A: { deposit: 2000000, contractValue: 8800000, roi: '25.7%',  weekly: 113500, duration: '14 Months (60 Weeks)' },
+          B: { deposit: 1500000, contractValue: 9100000, roi: '30%',    weekly: 97500,  duration: '18 Months (78 Weeks)' }
         }
       }
     };
 
     const state = { assetKey: null, tierKey: null };
 
-    function fmt(n) { return '₦' + n.toLocaleString('en-NG'); }
+    function fmt(n) {
+      return '₦' + n.toLocaleString('en-NG');
+    }
 
-    /* Step 1 */
+    /* ── Step 1: asset selection ── */
     function selectAsset(el, key) {
       document.querySelectorAll('.asset-option').forEach(o => o.classList.remove('selected'));
       el.classList.add('selected');
@@ -789,7 +517,7 @@
       document.getElementById('step1Next').disabled = false;
     }
 
-    /* Step 2 — render tier cards */
+    /* ── Step 2: render tier cards ── */
     function renderTiers() {
       const asset = ASSETS[state.assetKey];
       document.getElementById('tierGrid').innerHTML = ['A', 'B'].map(t => {
@@ -801,11 +529,12 @@
             <div class="tier-name">${t === 'A' ? 'Higher Deposit · Shorter Contract' : 'Lower Deposit · Longer Contract'}</div>
             <div class="tier-specs">
               <div class="tier-spec-row"><span class="t-label">Initial Deposit</span><span class="t-val green">${fmt(tier.deposit)}</span></div>
+              <div class="tier-divider"></div>
               <div class="tier-spec-row"><span class="t-label">Total Contract Value</span><span class="t-val">${fmt(tier.contractValue)}</span></div>
-              <div class="tier-spec-row"><span class="t-label">Weekly Remittance</span><span class="t-val green">${fmt(tier.weekly)} / wk</span></div>
+              <div class="tier-spec-row"><span class="t-label">Weekly Remittance</span><span class="t-val green">${fmt(tier.weekly)}/wk</span></div>
               <div class="tier-spec-row"><span class="t-label">Duration</span><span class="t-val">${tier.duration}</span></div>
             </div>
-            <div class="tier-badge">ROI: ${tier.roi}</div>
+            <div class="tier-badge">Investor ROI: ${tier.roi}</div>
           </div>`;
       }).join('');
       document.getElementById('step2Next').disabled = true;
@@ -818,20 +547,39 @@
       document.getElementById('step2Next').disabled = false;
     }
 
-    /* Step 4 — populate summary */
-    function populateSummary() {
-      const asset = ASSETS[state.assetKey];
-      const tier = asset.tiers[state.tierKey];
-      document.getElementById('final-asset').textContent = asset.label;
-      document.getElementById('final-tier').textContent = `Tier ${state.tierKey} — ${state.tierKey === 'A' ? 'Higher Deposit' : 'Lower Deposit'}`;
-      document.getElementById('final-price').textContent = asset.purchasePrice;
-      document.getElementById('final-contract').textContent = fmt(tier.contractValue);
-      document.getElementById('final-deposit').textContent = fmt(tier.deposit);
-      document.getElementById('final-duration').textContent = tier.duration;
-      document.getElementById('final-weekly').textContent = fmt(tier.weekly) + ' / week';
+    /* ── Step 3: validation ── */
+    function validateAndNext() {
+      const fields = [
+        { id: 'firstName', errId: 'err-firstName', test: v => v.trim().length > 0 },
+        { id: 'lastName',  errId: 'err-lastName',  test: v => v.trim().length > 0 },
+        { id: 'phone',     errId: 'err-phone',     test: v => v.trim().length >= 7 },
+        { id: 'state',     errId: 'err-state',     test: v => v !== '' },
+      ];
+      let valid = true;
+      fields.forEach(f => {
+        const el = document.getElementById(f.id);
+        const errEl = document.getElementById(f.errId);
+        const ok = f.test(el.value);
+        el.classList.toggle('invalid', !ok);
+        errEl.classList.toggle('show', !ok);
+        if (!ok) valid = false;
+      });
+      if (valid) goToStep(4);
     }
 
-    /* Navigation */
+    /* ── Step 4: populate summary ── */
+    function populateSummary() {
+      const asset = ASSETS[state.assetKey];
+      const tier  = asset.tiers[state.tierKey];
+      document.getElementById('final-asset').textContent    = asset.label;
+      document.getElementById('final-tier').textContent     = `Tier ${state.tierKey} — ${state.tierKey === 'A' ? 'Higher Deposit' : 'Lower Deposit'}`;
+      document.getElementById('final-contract').textContent = fmt(tier.contractValue);
+      document.getElementById('final-deposit').textContent  = fmt(tier.deposit);
+      document.getElementById('final-duration').textContent = tier.duration;
+      document.getElementById('final-weekly').textContent   = fmt(tier.weekly) + ' / week';
+    }
+
+    /* ── Navigation ── */
     function goToStep(n) {
       if (n === 2) renderTiers();
       if (n === 4) populateSummary();
@@ -843,11 +591,10 @@
         const sn = parseInt(s.dataset.step);
         s.classList.remove('active', 'done');
         if (sn === n) s.classList.add('active');
-        if (sn < n) s.classList.add('done');
+        if (sn < n)  s.classList.add('done');
       });
 
-      const wizard = document.querySelector('.wizard-wrap');
-      if(wizard) window.scrollTo({ top: wizard.offsetTop - 80, behavior: 'smooth' });
+      window.scrollTo({ top: document.querySelector('.wizard-wrap').offsetTop - 90, behavior: 'smooth' });
     }
 
     function toggleSubmit() {
@@ -855,11 +602,31 @@
     }
 
     function submitQuote() {
-      document.getElementById('refCode').textContent = Math.floor(100000 + Math.random() * 900000);
-      document.getElementById('progressSteps').style.display = 'none';
-      document.querySelectorAll('.step-card').forEach(c => c.classList.remove('active'));
-      document.getElementById('stepSuccess').classList.add('active');
+      const btn = document.getElementById('submitBtn');
+      btn.classList.add('loading');
+      // Simulate async submission
+      setTimeout(() => {
+        btn.classList.remove('loading');
+        document.getElementById('refCode').textContent = Math.floor(100000 + Math.random() * 900000);
+        document.getElementById('progressSteps').style.opacity = '0';
+        document.querySelectorAll('.step-card').forEach(c => c.classList.remove('active'));
+        document.getElementById('step5').classList.add('active');
+        window.scrollTo({ top: document.querySelector('.wizard-wrap').offsetTop - 90, behavior: 'smooth' });
+      }, 1400);
     }
+
+    /* ── Clear validation on input ── */
+    document.addEventListener('DOMContentLoaded', () => {
+      ['firstName','lastName','phone','state'].forEach(id => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.addEventListener('input', () => {
+          el.classList.remove('invalid');
+          const errEl = document.getElementById('err-' + id);
+          if (errEl) errEl.classList.remove('show');
+        });
+      });
+    });
   </script>
 </body>
 </html>

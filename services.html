@@ -8,397 +8,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
 
-  <style>
-    /* ── Top bar ── */
-    .top-bar {
-      display: flex; justify-content: flex-end; align-items: center;
-      gap: 24px; background: var(--ink); padding: 7px 40px;
-      font-size: 12px; color: rgba(255,255,255,0.5); letter-spacing: 0.02em;
-    }
-    .top-bar-item { display: flex; align-items: center; gap: 7px; }
-    .top-bar-item svg { flex-shrink: 0; opacity: 0.6; }
-    @media (max-width: 760px) { .top-bar { display: none; } }
-
-    /* ── Header ── */
-    .header {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1.5px solid var(--border);
-      padding: 0 40px;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 68px; animation: slideDown 0.5s ease both;
-    }
-
-    /* Logo placeholder
-       REPLACE: remove .logo-placeholder div entirely, keep only:
-       <img src="images/logo.png" alt="Enigma Transport Services"> */
-    .logo-link { text-decoration: none; display: flex; align-items: center; flex-shrink: 0; }
-    .logo-img-wrap { height: 40px; width: 168px; display: flex; align-items: center; }
-    .logo-placeholder {
-      width: 100%; height: 40px; background: var(--green-pale);
-      border: 1.5px dashed rgba(91,191,58,0.4); border-radius: 8px;
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-    }
-    .logo-placeholder span {
-      font-family: var(--font-head); font-size: 10.5px; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-dark);
-    }
-    .logo-img-wrap img { height: 40px; width: auto; display: block; object-fit: contain; }
-
-    /* Nav — bottom border slide-in */
-    .nav { display: flex; align-items: center; gap: 0; }
-    .nav a {
-      font-size: 14px; font-weight: 500; color: var(--ink-soft);
-      text-decoration: none; padding: 8px 16px;
-      position: relative; transition: color 0.22s; white-space: nowrap;
-    }
-    .nav a::after {
-      content: ''; position: absolute; bottom: 0; left: 50%; right: 50%;
-      height: 2.5px; background: var(--green); border-radius: 2px;
-      transition: left 0.28s cubic-bezier(.22,1,.36,1), right 0.28s cubic-bezier(.22,1,.36,1);
-    }
-    .nav a:hover { color: var(--green-dark); }
-    .nav a:hover::after { left: 12px; right: 12px; }
-    .nav a.active { color: var(--green-dark); font-weight: 600; }
-    .nav a.active::after { left: 12px; right: 12px; }
-    .nav-cta {
-      margin-left: 14px; font-family: var(--font-head); font-size: 13px; font-weight: 700;
-      background: var(--green); color: #fff !important;
-      padding: 10px 22px !important; border-radius: 100px !important;
-      border: none; cursor: pointer;
-      transition: background 0.2s, transform 0.2s !important;
-      flex-shrink: 0;
-    }
-    .nav-cta::after { display: none !important; }
-    .nav-cta:hover { background: var(--green-dark) !important; transform: scale(1.04) !important; }
-    .menu-toggle {
-      display: none; background: none; border: none;
-      cursor: pointer; padding: 6px; flex-direction: column; gap: 5px;
-    }
-    .menu-toggle span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; }
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --green:       #5bbf3a;
-      --green-dark:  #3a9e1f;
-      --green-dim:   rgba(91,191,58,0.14);
-      --green-pale:  #eaf7e4;
-      --ink:         #0e1a0a;
-      --ink-soft:    #3d4d38;
-      --muted:       #6b7c65;
-      --surface:     #ffffff;
-      --bg:          #f3f7f0;
-      --border:      rgba(91,191,58,0.22);
-      --font-head:   'Syne', sans-serif;
-      --font-body:   'DM Sans', sans-serif;
-    }
-
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--font-body); background: var(--surface); color: var(--ink); overflow-x: hidden; }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes slideDown {
-      from { transform: translateY(-100%); opacity: 0; }
-      to   { transform: translateY(0); opacity: 1; }
-    }
-
-    /* ─────────────────────────────────────────
-       IMAGE PLACEHOLDERS
-       To replace any placeholder, swap the .img-placeholder div with:
-       <img src="images/your-file.jpg" alt="Description"
-            style="width:100%;height:100%;object-fit:cover;display:block;">
-    ───────────────────────────────────────── */
-    .img-placeholder {
-      width: 100%; height: 100%;
-      background: #d8e5d2;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 8px; color: #8aab80; font-size: 12px; font-weight: 600;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      position: relative; overflow: hidden;
-    }
-    .img-placeholder::before {
-      content: ''; position: absolute; inset: 0;
-      background:
-        linear-gradient(rgba(138,171,128,0.15) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(138,171,128,0.15) 1px, transparent 1px);
-      background-size: 28px 28px;
-    }
-    .img-placeholder svg { width: 36px; height: 36px; opacity: 0.4; position: relative; z-index: 1; }
-    .img-placeholder span { position: relative; z-index: 1; }
-
-        
-    
-    
-    
-    
-    
-    /* ── Nav — bottom border slide-in on hover/active ── */
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    /* ── Page hero ────────────────────────── */
-    .page-hero { background: var(--ink); padding: 80px 40px 110px; position: relative; overflow: hidden; }
-    .page-hero::before { content: ''; position: absolute; top: -140px; right: -80px; width: 560px; height: 560px; border-radius: 50%; border: 1.5px solid rgba(91,191,58,0.1); pointer-events: none; }
-    .page-hero::after { content: ''; position: absolute; bottom: -100px; left: 8%; width: 280px; height: 280px; border-radius: 50%; border: 1px solid rgba(91,191,58,0.08); pointer-events: none; }
-    .page-hero-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 1; }
-
-    .breadcrumb { font-size: 12px; color: rgba(255,255,255,0.3); margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
-    .breadcrumb a { color: var(--green); text-decoration: none; }
-
-    .section-tag { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-head); font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green); margin-bottom: 16px; }
-    .section-tag::before { content: ''; width: 20px; height: 2px; background: var(--green); border-radius: 2px; }
-
-    .page-hero h1 { font-family: var(--font-head); font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 800; color: #fff; line-height: 1.08; animation: fadeUp 0.55s 0.1s both; }
-    .page-hero h1 .accent { color: var(--green); }
-    .page-hero p { font-size: 16px; color: rgba(255,255,255,0.55); max-width: 520px; line-height: 1.75; margin-top: 16px; animation: fadeUp 0.55s 0.2s both; }
-
-    /* ── Section shared ───────────────────── */
-    .section-h2 { font-family: var(--font-head); font-size: clamp(1.7rem, 2.8vw, 2.3rem); font-weight: 800; color: var(--ink); line-height: 1.15; margin-bottom: 14px; }
-    .section-h2 .accent { color: var(--green); }
-    .section-intro { font-size: 15px; color: var(--muted); line-height: 1.75; max-width: 560px; }
-
-    /* ── Asset catalogue ──────────────────── */
-    .catalogue { padding: 100px 40px; background: var(--bg); position: relative; }
-    .catalogue-inner { max-width: 1100px; margin: 0 auto; }
-    .catalogue-head { margin-bottom: 56px; }
-    .asset-list { display: flex; flex-direction: column; gap: 0; }
-
-    .asset-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-radius: 24px; overflow: hidden; border: 1.5px solid var(--border); background: var(--surface); margin-bottom: 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: box-shadow 0.3s, transform 0.35s; }
-    .asset-row:hover { box-shadow: 0 12px 40px rgba(91,191,58,0.12); transform: translateY(-4px); }
-    .asset-row.reverse { direction: rtl; }
-    .asset-row.reverse > * { direction: ltr; }
-    @media (max-width: 820px) { .asset-row, .asset-row.reverse { grid-template-columns: 1fr; direction: ltr; } .asset-row.reverse > * { direction: ltr; } }
-
-    .asset-img-wrap { height: 340px; position: relative; overflow: hidden; }
-    /* REPLACE: swap .img-placeholder inside .asset-img-wrap with:
-       <img src="images/your-photo.jpg" alt="Asset" style="width:100%;height:100%;object-fit:cover;"> */
-
-    .asset-body { padding: 44px 40px; display: flex; flex-direction: column; justify-content: center; }
-    .asset-badge { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-head); font-size: 10.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green-dark); background: var(--green-pale); border-radius: 100px; padding: 5px 12px; margin-bottom: 16px; width: fit-content; }
-    .asset-body h3 { font-family: var(--font-head); font-size: 1.6rem; font-weight: 800; color: var(--ink); margin-bottom: 12px; line-height: 1.2; }
-    .asset-body > p { font-size: 14.5px; color: var(--muted); line-height: 1.75; margin-bottom: 20px; }
-
-    /* Tier A/B specs grid */
-    .asset-tiers { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 28px; }
-    .tier-box { background: var(--bg); border-radius: 12px; padding: 14px 16px; border: 1.5px solid var(--border); }
-    .tier-box-label { font-family: var(--font-head); font-size: 10.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green-dark); margin-bottom: 10px; }
-    .tier-box-row { display: flex; justify-content: space-between; font-size: 12.5px; margin-bottom: 5px; }
-    .tier-box-row:last-child { margin-bottom: 0; }
-    .tier-box-row .tb-key { color: var(--muted); }
-    .tier-box-row .tb-val { font-family: var(--font-head); font-weight: 700; color: var(--ink); }
-    .tier-box-row .tb-val.green { color: var(--green-dark); }
-
-    .asset-cta { display: flex; gap: 10px; flex-wrap: wrap; }
-    .btn-primary { font-family: var(--font-head); font-size: 13px; font-weight: 700; background: var(--green); color: #fff; border: none; border-radius: 100px; padding: 12px 26px; cursor: pointer; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 16px rgba(91,191,58,0.3); transition: background 0.25s, transform 0.2s, box-shadow 0.25s; }
-    .btn-primary:hover { background: var(--green-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(91,191,58,0.35); }
-    .btn-primary svg { width: 13px; height: 13px; transition: transform 0.2s; }
-    .btn-primary:hover svg { transform: translateX(3px); }
-    .btn-ghost-sm { font-family: var(--font-head); font-size: 13px; font-weight: 700; background: transparent; color: var(--ink-soft); border: 1.5px solid var(--border); border-radius: 100px; padding: 11px 22px; cursor: pointer; transition: border-color 0.22s, color 0.22s, background 0.22s; }
-    .btn-ghost-sm:hover { border-color: var(--green); color: var(--green-dark); background: var(--green-pale); }
-
-    /* ── Hire purchase explained ──────────── */
-    .hp-section { padding: 100px 40px; background: var(--surface); }
-    .hp-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
-    @media (max-width: 820px) { .hp-inner { grid-template-columns: 1fr; gap: 48px; } }
-
-    .hp-text .section-tag { color: var(--green-dark); }
-    .hp-text p { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 18px; }
-    .hp-steps { display: flex; flex-direction: column; gap: 16px; }
-    .hp-step { display: flex; gap: 16px; align-items: flex-start; padding: 18px 20px; border-radius: 14px; background: var(--bg); border: 1.5px solid var(--border); transition: border-color 0.25s, box-shadow 0.25s; }
-    .hp-step:hover { border-color: var(--green); box-shadow: 0 6px 20px rgba(91,191,58,0.1); }
-    .hp-step-num { width: 36px; height: 36px; flex-shrink: 0; border-radius: 50%; background: var(--green); display: flex; align-items: center; justify-content: center; font-family: var(--font-head); font-size: 14px; font-weight: 800; color: #fff; }
-    .hp-step-body h4 { font-family: var(--font-head); font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
-    .hp-step-body p { font-size: 13px; color: var(--muted); line-height: 1.6; }
-
-    .hp-visual { position: relative; }
-    .hp-img-frame { width: 100%; height: 420px; border-radius: 20px; overflow: hidden; border: 1.5px solid var(--border); }
-    /* REPLACE: swap .img-placeholder inside .hp-img-frame with <img ...> */
-
-    .hp-overlay-card { position: absolute; bottom: -24px; left: -24px; background: var(--ink); border-radius: 16px; padding: 20px 24px; box-shadow: 0 8px 32px rgba(0,0,0,0.2); min-width: 200px; }
-    .hp-overlay-card .oc-label { font-size: 11px; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
-    .hp-overlay-card .oc-value { font-family: var(--font-head); font-size: 1.5rem; font-weight: 800; color: var(--green); }
-    .hp-overlay-card .oc-sub { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 3px; }
-
-    /* ── Plan comparison — Tier A vs Tier B ── */
-    .plans { padding: 100px 40px; background: var(--bg); }
-    .plans-inner { max-width: 1100px; margin: 0 auto; }
-    .plans-head { text-align: center; margin-bottom: 56px; }
-    .plans-head .section-intro { margin: 12px auto 0; }
-
-    .plans-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 760px; margin: 0 auto; }
-    @media (max-width: 620px) { .plans-grid { grid-template-columns: 1fr; } }
-
-    .plan-card { background: var(--surface); border: 1.5px solid var(--border); border-radius: 22px; padding: 36px 28px; position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
-    .plan-card:hover { transform: translateY(-6px); box-shadow: 0 16px 44px rgba(91,191,58,0.13); }
-    .plan-card.featured { background: var(--ink); border-color: var(--green); box-shadow: 0 8px 32px rgba(91,191,58,0.2); }
-    .plan-card.featured:hover { transform: translateY(-8px); box-shadow: 0 20px 48px rgba(91,191,58,0.28); }
-
-    .featured-badge { position: absolute; top: 18px; right: 18px; background: var(--green); color: #fff; font-family: var(--font-head); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 100px; padding: 4px 12px; }
-
-    .plan-name { font-family: var(--font-head); font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); margin-bottom: 6px; }
-    .plan-title { font-family: var(--font-head); font-size: 1.8rem; font-weight: 800; color: var(--ink); line-height: 1; margin-bottom: 6px; }
-    .plan-card.featured .plan-title { color: #fff; }
-    .plan-sub { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
-    .plan-card.featured .plan-sub { color: rgba(255,255,255,0.4); }
-
-    .plan-divider { width: 100%; height: 1.5px; background: var(--border); margin-bottom: 24px; }
-    .plan-card.featured .plan-divider { background: rgba(255,255,255,0.1); }
-
-    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
-    .plan-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; color: var(--ink-soft); line-height: 1.5; }
-    .plan-card.featured .plan-features li { color: rgba(255,255,255,0.75); }
-    .plan-features li .check { width: 18px; height: 18px; border-radius: 50%; background: var(--green-pale); flex-shrink: 0; margin-top: 2px; display: flex; align-items: center; justify-content: center; }
-    .plan-card.featured .plan-features li .check { background: rgba(91,191,58,0.2); }
-    .plan-features li .check svg { width: 9px; height: 9px; }
-
-    .plan-btn { width: 100%; font-family: var(--font-head); font-size: 13.5px; font-weight: 700; border-radius: 100px; padding: 14px; cursor: pointer; border: 1.5px solid var(--green); background: transparent; color: var(--green-dark); transition: background 0.22s, color 0.22s, box-shadow 0.22s; }
-    .plan-btn:hover { background: var(--green); color: #fff; box-shadow: 0 4px 16px rgba(91,191,58,0.3); }
-    .plan-card.featured .plan-btn { background: var(--green); color: #fff; border-color: var(--green); box-shadow: 0 4px 18px rgba(91,191,58,0.35); }
-    .plan-card.featured .plan-btn:hover { background: var(--green-dark); }
-
-    /* ── Additional services ──────────────── */
-    .add-services { padding: 100px 40px; background: var(--surface); }
-    .add-inner { max-width: 1100px; margin: 0 auto; }
-    .add-head { text-align: center; margin-bottom: 56px; }
-    .add-head .section-intro { margin: 12px auto 0; }
-
-    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    @media (max-width: 860px) { .services-grid { grid-template-columns: repeat(2,1fr); } }
-    @media (max-width: 540px) { .services-grid { grid-template-columns: 1fr; } }
-
-    .service-card { background: var(--bg); border: 1.5px solid var(--border); border-radius: 18px; overflow: hidden; position: relative; transition: transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.35s, border-color 0.3s; }
-    .service-card:hover { transform: translateY(-7px); box-shadow: 0 16px 40px rgba(91,191,58,0.12); border-color: var(--green); }
-    .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--green), var(--green-dark)); opacity: 0; transition: opacity 0.3s; border-radius: 18px 18px 0 0; z-index: 2; pointer-events: none; }
-    .service-card:hover::before { opacity: 1; }
-    .service-card-img { height: 180px; position: relative; overflow: hidden; }
-    .service-card-body { padding: 22px 20px 24px; }
-    .service-card-body h4 { font-family: var(--font-head); font-size: 15.5px; font-weight: 800; color: var(--ink); margin-bottom: 8px; }
-    .service-card-body p { font-size: 13px; color: var(--muted); line-height: 1.65; }
-
-    /* ── FAQ ─────────────────────────────── */
-    .faq { padding: 100px 40px; background: var(--bg); }
-    .faq-inner { max-width: 780px; margin: 0 auto; }
-    .faq-head { text-align: center; margin-bottom: 52px; }
-    .faq-head .section-intro { margin: 12px auto 0; }
-    .faq-list { display: flex; flex-direction: column; gap: 10px; }
-    .faq-item { background: var(--surface); border: 1.5px solid var(--border); border-radius: 14px; overflow: hidden; transition: border-color 0.25s, box-shadow 0.25s; }
-    .faq-item.open { border-color: var(--green); box-shadow: 0 6px 20px rgba(91,191,58,0.1); }
-    .faq-q { padding: 20px 22px; display: flex; justify-content: space-between; align-items: center; gap: 16px; cursor: pointer; user-select: none; }
-    .faq-q span { font-family: var(--font-head); font-size: 14.5px; font-weight: 700; color: var(--ink); }
-    .faq-icon { width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0; background: var(--bg); border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; transition: background 0.25s, transform 0.3s; }
-    .faq-item.open .faq-icon { background: var(--green); border-color: var(--green); transform: rotate(45deg); }
-    .faq-icon svg { width: 12px; height: 12px; }
-    .faq-item.open .faq-icon svg path { stroke: #fff; }
-    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(.22,1,.36,1); }
-    .faq-item.open .faq-a { max-height: 300px; }
-    .faq-a-inner { padding: 0 22px 20px; font-size: 14px; color: var(--muted); line-height: 1.75; border-top: 1.5px solid var(--border); padding-top: 16px; }
-
-    /* ── CTA banner ───────────────────────── */
-    .cta-banner { background: linear-gradient(120deg, var(--green-dark) 0%, var(--green) 100%); padding: 88px 40px; text-align: center; position: relative; overflow: hidden; }
-    .cta-banner::before { content: ''; position: absolute; top: -80px; right: -80px; width: 340px; height: 340px; border-radius: 50%; background: rgba(255,255,255,0.06); pointer-events: none; }
-    .cta-banner h2 { font-family: var(--font-head); font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800; color: #fff; margin-bottom: 14px; position: relative; z-index: 1; }
-    .cta-banner p { font-size: 16px; color: rgba(255,255,255,0.8); max-width: 480px; margin: 0 auto 36px; line-height: 1.7; position: relative; z-index: 1; }
-    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
-    .btn-white { font-family: var(--font-head); font-size: 14px; font-weight: 700; background: #fff; color: var(--green-dark); border: none; border-radius: 100px; padding: 14px 32px; cursor: pointer; box-shadow: 0 4px 18px rgba(0,0,0,0.15); transition: transform 0.2s, box-shadow 0.2s; }
-    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
-    .btn-outline-white { font-family: var(--font-head); font-size: 14px; font-weight: 700; background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.5); border-radius: 100px; padding: 13px 32px; cursor: pointer; transition: background 0.22s, border-color 0.22s; }
-    .btn-outline-white:hover { background: rgba(255,255,255,0.15); border-color: #fff; }
-
-    
-    /* ── Footer ─────────────────────────────────────────── */
-    footer { background: var(--ink); padding: 64px 40px 0; }
-    .footer-top { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 52px; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    @media (max-width: 900px) { .footer-top { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 520px) { .footer-top { grid-template-columns: 1fr; } }
-
-    /* brand column spans full width of brand cell */
-    .footer-brand { display: flex; flex-direction: column; gap: 18px; }
-    .footer-logo-wrap { height: 38px; width: 160px; }
-    .footer-logo-placeholder {
-      width: 100%; height: 38px;
-      background: rgba(255,255,255,0.05);
-      border: 1.5px dashed rgba(255,255,255,0.14);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-    }
-    .footer-logo-placeholder span {
-      font-family: var(--font-head); font-size: 10px; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.2);
-    }
-    .footer-tagline { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.75; max-width: 280px; }
-
-    /* contact block */
-    .footer-contact-block { display: flex; flex-direction: column; gap: 10px; }
-    .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; }
-    .footer-contact-icon { width: 14px; height: 14px; flex-shrink: 0; color: var(--green); margin-top: 2px; }
-    .footer-contact-item a,
-    .footer-contact-item span { font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; line-height: 1.5; transition: color 0.2s; }
-    .footer-contact-item a:hover { color: var(--green); }
-
-    /* link columns */
-    .footer-links { display: contents; }
-    .footer-col h5 {
-      font-family: var(--font-head); font-size: 10.5px; font-weight: 700;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--green); margin-bottom: 16px;
-    }
-    .footer-col a {
-      display: block; font-size: 13px; color: rgba(255,255,255,0.45);
-      text-decoration: none; margin-bottom: 10px; transition: color 0.2s;
-    }
-    .footer-col a:hover { color: var(--green); }
-
-    /* bottom bar */
-    .footer-bottom {
-      max-width: 1100px; margin: 0 auto;
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 10px;
-      padding: 20px 0;
-      font-size: 12px; color: rgba(255,255,255,0.22);
-    }
-    .footer-bottom a { color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
-    .footer-bottom a:hover { color: var(--green); }
-    .footer-dot { margin: 0 6px; }
-
-    @media (max-width: 760px) {
-      footer { padding: 48px 20px 0; }
-      .footer-bottom { padding: 16px 0; }
-    }
-
-    /* ── Responsive ───────────────────────── */
-    @media (max-width: 760px) {
-      
-      
-      
-      
-      
-      
-      .nav a.active, 
-      
-      
-      .page-hero { padding: 60px 20px 90px; }
-      .catalogue, .hp-section, .plans, .add-services, .faq { padding: 70px 20px; }
-      .asset-body { padding: 28px 22px; }
-      .cta-banner { padding: 64px 20px; }
-      footer { padding: 48px 20px 28px; }
-    }
-  </style>
+ 
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
@@ -412,14 +23,9 @@
   <header class="header">
     <a href="index.html" class="logo-link">
       <div class="logo-img-wrap">
-        <!--
-          LOGO PLACEHOLDER — replace this entire div with:
-          <img src="images/logo.png" alt="Enigma Transport Services">
-        -->
-        <div class="logo-placeholder">
-          <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><rect x="1" y="5" width="16" height="10" rx="2" stroke="#3a9e1f" stroke-width="1.5"/><path d="M5 5V4a4 4 0 018 0v1" stroke="#3a9e1f" stroke-width="1.5" stroke-linecap="round"/></svg>
-          <span>logo.png</span>
-        </div>
+        
+          <img src="images/transport_logo.png" alt="Enigma Transport Services">
+       
       </div>
     </a>
 
@@ -461,14 +67,10 @@
       <div class="asset-list">
 
         <!-- Wheelbarrow -->
-        <div class="asset-row">
+        <div class="asset-row" id="wheelbarrow">
           <div class="asset-img-wrap">
-            <!-- REPLACE: <img src="images/wheelbarrow.jpg" alt="Wheelbarrow" style="width:100%;height:100%;object-fit:cover;"> -->
-            <div class="img-placeholder">
-              <svg viewBox="0 0 36 36" fill="none"><rect x="4" y="16" width="22" height="10" rx="2" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="28" r="4" stroke="currentColor" stroke-width="2"/><line x1="4" y1="16" x2="2" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="26" y1="16" x2="28" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="2" y1="10" x2="28" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-              <span>wheelbarrow.jpg</span>
+            <img src="images/wheelbarrow.png" alt="Wheelbarrow" style="width:100%;height:100%;object-fit:cover;"> -->
             </div>
-          </div>
           <div class="asset-body">
             <div class="asset-badge">Currently Active</div>
             <h3>Wheelbarrow</h3>
@@ -500,13 +102,10 @@
         </div>
 
         <!-- Keke Napep -->
-        <div class="asset-row reverse">
-          <div class="asset-img-wrap">
-            <!-- REPLACE: <img src="images/keke.jpg" alt="Keke Napep" style="width:100%;height:100%;object-fit:cover;"> -->
-            <div class="img-placeholder">
-              <svg viewBox="0 0 36 36" fill="none"><rect x="6" y="14" width="20" height="12" rx="3" stroke="currentColor" stroke-width="2"/><path d="M8 14L12 8h12l4 6" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="10" cy="28" r="3" stroke="currentColor" stroke-width="2"/><circle cx="26" cy="28" r="3" stroke="currentColor" stroke-width="2"/></svg>
-              <span>keke.jpg</span>
-            </div>
+        <div class="asset-row reverse" id="keke-napep">
+                <div class="asset-img-wrap">
+            <img src="images/keke.png" alt="Keke Napep" style="width:100%;height:100%;object-fit:cover;">
+            
           </div>
           <div class="asset-body">
             <div class="asset-badge">Available on Request</div>
@@ -537,15 +136,44 @@
             </div>
           </div>
         </div>
+ <div class="asset-row" id="keke-truck">
+          <div class="asset-img-wrap">
+            <img src="images/keke-truck.jpg" alt="Keke Truck" style="width:100%;height:100%;object-fit:cover;"> 
+          </div>
+          <div class="asset-body">
+            <div class="asset-badge">Available on Request</div>
+            <h3>Keke Truck (Cargo Tricycle)</h3>
+            <p>The Keke Truck is the cargo-variant of the tricycle — built for transporting goods, produce, and materials rather than passengers. Widely used across Abuja's markets, construction sites, and logistics yards. If you work in goods delivery or haulage, this plan gives you ownership of the vehicle that drives your income. Sourced and deployed upon confirmed plan and deposit. GPS tracking fitted before delivery.</p>
+            <div class="asset-tiers">
+              <div class="tier-box">
+                <div class="tier-box-label">Tier A</div>
+                <div class="tier-box-row"><span class="tb-key">Deposit</span><span class="tb-val green">&#8358;1,400,000</span></div>
+                <div class="tier-box-row"><span class="tb-key">Contract</span><span class="tb-val">&#8358;5,400,000</span></div>
+                <div class="tier-box-row"><span class="tb-key">Weekly</span><span class="tb-val">&#8358;77,000</span></div>
+                <div class="tier-box-row"><span class="tb-key">Duration</span><span class="tb-val">12 Months</span></div>
+              </div>
+              <div class="tier-box">
+                <div class="tier-box-label">Tier B</div>
+                <div class="tier-box-row"><span class="tb-key">Deposit</span><span class="tb-val green">&#8358;1,000,000</span></div>
+                <div class="tier-box-row"><span class="tb-key">Contract</span><span class="tb-val">&#8358;5,600,000</span></div>
+                <div class="tier-box-row"><span class="tb-key">Weekly</span><span class="tb-val">&#8358;60,500</span></div>
+                <div class="tier-box-row"><span class="tb-key">Duration</span><span class="tb-val">18 Months</span></div>
+              </div>
+            </div>
+            <div class="asset-cta">
+              <button class="btn-primary" onclick="window.location.href='quote.html'">
+                Get a Quote
+                <svg viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 3l3.5 3.5L7 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <button class="btn-ghost-sm" onclick="window.location.href='plans.html#keke-truck'">View Full Details</button>
+            </div>
+          </div>
+        </div>
 
         <!-- Motorbike -->
-        <div class="asset-row">
+        <div class="asset-row" id="motorbike">
           <div class="asset-img-wrap">
-            <!-- REPLACE: <img src="images/motorcycle.jpg" alt="Motorbike" style="width:100%;height:100%;object-fit:cover;"> -->
-            <div class="img-placeholder">
-              <svg viewBox="0 0 36 36" fill="none"><circle cx="9" cy="26" r="5" stroke="currentColor" stroke-width="2"/><circle cx="27" cy="26" r="5" stroke="currentColor" stroke-width="2"/><path d="M9 26L16 14h10l5 8" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M16 14l3-6 5 3" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-              <span>motorcycle.jpg</span>
-            </div>
+           <img src="images/bike.png" alt="Motorbike" style="width:100%;height:100%;object-fit:cover;">
           </div>
           <div class="asset-body">
             <div class="asset-badge">Available on Request</div>
@@ -579,16 +207,13 @@
 
         <!-- Used Automobile -->
         <div class="asset-row reverse">
-          <div class="asset-img-wrap">
-            <!-- REPLACE: <img src="images/car.jpg" alt="Used Automobile" style="width:100%;height:100%;object-fit:cover;"> -->
-            <div class="img-placeholder">
-              <svg viewBox="0 0 36 36" fill="none"><rect x="4" y="18" width="28" height="10" rx="3" stroke="currentColor" stroke-width="2"/><path d="M6 18l4-8h16l4 8" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><rect x="8" y="12" width="20" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="30" r="3" stroke="currentColor" stroke-width="2"/><circle cx="26" cy="30" r="3" stroke="currentColor" stroke-width="2"/></svg>
-              <span>car.jpg</span>
-            </div>
+          <div class="asset-img-wrap" id="automobile">
+        <img src="images/car.png" alt="Used Automobile" style="width:100%;height:100%;object-fit:cover;">
+           
           </div>
           <div class="asset-body">
             <div class="asset-badge">Available on Request</div>
-            <h3>Used Automobile</h3>
+            <h3>Automobile</h3>
             <p>Our highest-tier asset — built for experienced drivers operating on Bolt, InDrive, private hire, or commercial taxi routes. A car of your own means you keep 100% of your earnings with no daily remittance to a vehicle owner. Each automobile is individually sourced based on mechanical condition and suitability, fully serviced, and fitted with GPS tracking before delivery. Contract value varies by model — contact us directly after submitting a quote request to confirm availability and pricing.</p>
             <div class="asset-tiers">
               <div class="tier-box">
@@ -662,11 +287,8 @@
 
       <div class="hp-visual">
         <div class="hp-img-frame">
-          <!-- REPLACE: <img src="images/hire-purchase-handshake.jpg" alt="Hire Purchase" style="width:100%;height:100%;object-fit:cover;"> -->
-          <div class="img-placeholder">
-            <svg viewBox="0 0 36 36" fill="none"><path d="M4 22l8-8 6 6 8-10 6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>hire-purchase-photo.jpg</span>
-          </div>
+         <img src="images/hire.png" alt="Hire Purchase" style="width:100%;height:100%;object-fit:cover;">
+          
         </div>
         <div class="hp-overlay-card">
           <div class="oc-label">Contract Duration</div>
@@ -952,86 +574,59 @@
   </section>
 
     <!-- Footer -->
-  <footer>
-    <div class="footer-top">
-      <div class="footer-brand">
-        <!--
-          FOOTER LOGO PLACEHOLDER
-          Replace the .footer-logo-placeholder div with:
-          <img src="images/logo-white.png" alt="Enigma Transport Services" style="height:36px;width:auto;display:block;">
-        -->
-        <div class="footer-logo-wrap">
-          <div class="footer-logo-placeholder">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-              <rect x="1" y="5" width="16" height="10" rx="2" stroke="rgba(255,255,255,0.3)" stroke-width="1.4"/>
-              <path d="M5 5V4a4 4 0 018 0v1" stroke="rgba(255,255,255,0.3)" stroke-width="1.4" stroke-linecap="round"/>
-            </svg>
-            <span>logo-white.png</span>
-          </div>
-        </div>
-        <p class="footer-tagline">A structured hire purchase platform helping transport workers in Abuja own their assets. Founded 2026.</p>
-        <div class="footer-contact-block">
-          <div class="footer-contact-item">
-            <!--
-              ICON PLACEHOLDER — replace svg with your phone icon image:
-              <img src="images/icon-phone.svg" alt="" width="14" height="14">
-            -->
-            <svg class="footer-contact-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 10.67v2a1.33 1.33 0 01-1.45 1.33 13.19 13.19 0 01-5.75-2.05 13 13 0 01-4-4A13.19 13.19 0 01.75 2.45 1.33 1.33 0 012.07 1h2a1.33 1.33 0 011.33 1.14 8.56 8.56 0 00.47 1.88 1.33 1.33 0 01-.3 1.41L4.59 6.4a10.67 10.67 0 004 4l.97-.97a1.33 1.33 0 011.41-.3 8.56 8.56 0 001.88.47A1.33 1.33 0 0114 10.67z"/></svg>
-            <a href="tel:+2348000000000">+234 800 000 0000</a>
-          </div>
-          <div class="footer-contact-item">
-            <!--
-              ICON PLACEHOLDER — replace svg with your email icon image:
-              <img src="images/icon-email.svg" alt="" width="14" height="14">
-            -->
-            <svg class="footer-contact-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="14" height="10" rx="1.5"/><path d="M1 3l7 5.5L15 3"/></svg>
-            <a href="/cdn-cgi/l/email-protection#ff96919990bf9a919698929e8b8d9e918c8f908d8bd19c9092"><span class="__cf_email__" data-cfemail="0c65626a634c6962656b616d787e6d627f7c637e78226f6361">[email&#160;protected]</span></a>
-          </div>
-          <div class="footer-contact-item">
-            <!--
-              ICON PLACEHOLDER — replace svg with your location icon image:
-              <img src="images/icon-location.svg" alt="" width="14" height="14">
-            -->
-            <svg class="footer-contact-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1.5A4.5 4.5 0 0112.5 6c0 3.5-4.5 8.5-4.5 8.5S3.5 9.5 3.5 6A4.5 4.5 0 018 1.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
-            <span>8A Thaba Tseka Street, Wuse 2, Abuja</span>
-          </div>
-        </div>
+ <footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo-wrap">
+        <img src="images/transport_logo.png" alt="Enigma Transport Services">
       </div>
-
-      <div class="footer-links">
-        <div class="footer-col">
-          <h5>Company</h5>
-          <a href="index.html">Home</a>
-          <a href="about.html">About Us</a>
-          <a href="services.html">Services</a>
-          <a href="contact.html">Contact</a>
+      <p class="footer-tagline">A structured hire purchase platform helping transport workers in Abuja own their assets. Founded 2026.</p>
+      <div class="footer-contact-block">
+        <div class="footer-contact-item">
+          <svg class="footer-contact-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 10.67v2a1.33 1.33 0 01-1.45 1.33 13.19 13.19 0 01-5.75-2.05 13 13 0 01-4-4A13.19 13.19 0 01.75 2.45 1.33 1.33 0 012.07 1h2a1.33 1.33 0 011.33 1.14 8.56 8.56 0 00.47 1.88 1.33 1.33 0 01-.3 1.41L4.59 6.4a10.67 10.67 0 004 4l.97-.97a1.33 1.33 0 011.41-.3 8.56 8.56 0 001.88.47A1.33 1.33 0 0114 10.67z"/></svg>
+          <a href="tel:+2348000000000">+234 800 000 0000</a>
         </div>
-        <div class="footer-col">
-          <h5>Ownership Plans</h5>
-          <a href="plans.html#wheelbarrow">Wheelbarrow</a>
-          <a href="plans.html#keke">Keke Napep</a>
-          <a href="plans.html#motorbike">Motorbike</a>
-          <a href="plans.html#automobile">Used Automobile</a>
-          <a href="plans.html#tiers">Tier A vs Tier B</a>
+        <div class="footer-contact-item">
+          <svg class="footer-contact-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="14" height="10" rx="1.5"/><path d="M1 3l7 5.5L15 3"/></svg>
+          <a href="mailto:info@enigmatransport.com">info@enigmatransport.com</a>
         </div>
-        <div class="footer-col">
-          <h5>Legal</h5>
-          <a href="terms.html">Terms &amp; Conditions</a>
-          <a href="contact.html">Privacy Policy</a>
-          <a href="quote.html">Get a Quote</a>
+        <div class="footer-contact-item">
+          <svg class="footer-contact-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1.5A4.5 4.5 0 0112.5 6c0 3.5-4.5 8.5-4.5 8.5S3.5 9.5 3.5 6A4.5 4.5 0 018 1.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+          <span>8A Thaba Tseka Street, Wuse 2, Abuja</span>
         </div>
       </div>
     </div>
-
-    <div class="footer-bottom">
-      <span>&copy; 2026 Enigma Transport Services. All rights reserved.</span>
-      <span>
-        <a href="terms.html">Terms &amp; Conditions</a>
-        <span class="footer-dot">&middot;</span>
-        <a href="contact.html">Privacy Policy</a>
-      </span>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
     </div>
-  </footer>
+    <div class="footer-col">
+      <h5>Ownership Plans</h5>
+      <a href="plans.html#wheelbarrow">Wheelbarrow</a>
+      <a href="plans.html#keke">Keke Napep</a>
+      <a href="plans.html#motorbike">Motorbike</a>
+      <a href="plans.html#automobile">Used Automobile</a>
+      <a href="plans.html#tiers">Tier A vs Tier B</a>
+    </div>
+    <div class="footer-col">
+      <h5>Legal</h5>
+      <a href="terms.html">Terms &amp; Conditions</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="quote.html">Get a Quote</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Enigma Transport Services. All rights reserved.</span>
+    <span>
+      <a href="terms.html">Terms &amp; Conditions</a>
+      <span class="footer-dot">&middot;</span>
+      <a href="privacy.html">Privacy Policy</a>
+    </span>
+  </div>
+</footer>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 
   <script>

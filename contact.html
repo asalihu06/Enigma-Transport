@@ -8,619 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
 
-  <style>
-    /* ── Top bar ── */
-    .top-bar {
-      display: flex; justify-content: flex-end; align-items: center;
-      gap: 24px; background: var(--ink); padding: 7px 40px;
-      font-size: 12px; color: rgba(255,255,255,0.5); letter-spacing: 0.02em;
-    }
-    .top-bar-item { display: flex; align-items: center; gap: 7px; }
-    .top-bar-item svg { flex-shrink: 0; opacity: 0.6; }
-    @media (max-width: 760px) { .top-bar { display: none; } }
-
-    /* ── Header ── */
-    .header {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1.5px solid var(--border);
-      padding: 0 40px;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 68px; animation: slideDown 0.5s ease both;
-    }
-
-    /* Logo placeholder
-       REPLACE: remove .logo-placeholder div entirely, keep only:
-       <img src="images/logo.png" alt="Enigma Transport Services"> */
-    .logo-link { text-decoration: none; display: flex; align-items: center; flex-shrink: 0; }
-    .logo-img-wrap { height: 40px; width: 168px; display: flex; align-items: center; }
-    .logo-placeholder {
-      width: 100%; height: 40px; background: var(--green-pale);
-      border: 1.5px dashed rgba(91,191,58,0.4); border-radius: 8px;
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-    }
-    .logo-placeholder span {
-      font-family: var(--font-head); font-size: 10.5px; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-dark);
-    }
-    .logo-img-wrap img { height: 40px; width: auto; display: block; object-fit: contain; }
-
-    /* Nav — bottom border slide-in */
-    .nav { display: flex; align-items: center; gap: 0; }
-    .nav a {
-      font-size: 14px; font-weight: 500; color: var(--ink-soft);
-      text-decoration: none; padding: 8px 16px;
-      position: relative; transition: color 0.22s; white-space: nowrap;
-    }
-    .nav a::after {
-      content: ''; position: absolute; bottom: 0; left: 50%; right: 50%;
-      height: 2.5px; background: var(--green); border-radius: 2px;
-      transition: left 0.28s cubic-bezier(.22,1,.36,1), right 0.28s cubic-bezier(.22,1,.36,1);
-    }
-    .nav a:hover { color: var(--green-dark); }
-    .nav a:hover::after { left: 12px; right: 12px; }
-    .nav a.active { color: var(--green-dark); font-weight: 600; }
-    .nav a.active::after { left: 12px; right: 12px; }
-    .nav-cta {
-      margin-left: 14px; font-family: var(--font-head); font-size: 13px; font-weight: 700;
-      background: var(--green); color: #fff !important;
-      padding: 10px 22px !important; border-radius: 100px !important;
-      border: none; cursor: pointer;
-      transition: background 0.2s, transform 0.2s !important;
-      flex-shrink: 0;
-    }
-    .nav-cta::after { display: none !important; }
-    .nav-cta:hover { background: var(--green-dark) !important; transform: scale(1.04) !important; }
-    .menu-toggle {
-      display: none; background: none; border: none;
-      cursor: pointer; padding: 6px; flex-direction: column; gap: 5px;
-    }
-    .menu-toggle span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; }
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --green:        #5bbf3a;
-      --green-dark:   #3a9e1f;
-      --green-dim:    rgba(91,191,58,0.14);
-      --green-pale:   #eaf7e4;
-      --ink:          #0e1a0a;
-      --ink-soft:     #3d4d38;
-      --muted:        #6b7c65;
-      --surface:      #ffffff;
-      --bg:           #f3f7f0;
-      --border:       rgba(91,191,58,0.22);
-      --font-head:    'Syne', sans-serif;
-      --font-body:    'DM Sans', sans-serif;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: var(--font-body);
-      background: var(--bg);
-      color: var(--ink);
-      overflow-x: hidden;
-    }
-
-        
-    
-    
-    
-    
-    
-    /* ── Nav — bottom border slide-in on hover/active ── */
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    /* ── Page hero banner ────────────────────── */
-    .page-hero {
-      background: var(--ink);
-      padding: 80px 40px 90px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* decorative circles */
-    .page-hero::before,
-    .page-hero::after {
-      content: '';
-      position: absolute;
-      border-radius: 50%;
-      border: 1.5px solid rgba(91,191,58,0.15);
-      pointer-events: none;
-    }
-    .page-hero::before {
-      width: 500px; height: 500px;
-      top: -200px; right: -100px;
-    }
-    .page-hero::after {
-      width: 300px; height: 300px;
-      bottom: -160px; left: 60px;
-    }
-
-    .page-hero-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    .breadcrumb {
-      font-size: 12px;
-      color: rgba(255,255,255,0.4);
-      margin-bottom: 18px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .breadcrumb a { color: var(--green); text-decoration: none; }
-    .breadcrumb span { color: rgba(255,255,255,0.25); }
-
-    .page-hero h1 {
-      font-family: var(--font-head);
-      font-size: clamp(2.2rem, 5vw, 3.6rem);
-      font-weight: 800;
-      color: #fff;
-      line-height: 1.08;
-      animation: fadeUp 0.6s 0.1s both;
-    }
-    .page-hero h1 .accent { color: var(--green); }
-
-    .page-hero p {
-      font-size: 16px;
-      color: rgba(255,255,255,0.6);
-      max-width: 480px;
-      line-height: 1.7;
-      margin-top: 16px;
-      animation: fadeUp 0.6s 0.2s both;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(22px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ── Main content ────────────────────────── */
-    .contact-main {
-      max-width: 1100px;
-      margin: -48px auto 0;
-      padding: 0 40px 100px;
-      position: relative;
-      z-index: 10;
-      display: grid;
-      grid-template-columns: 1fr 1.6fr;
-      gap: 28px;
-      align-items: start;
-    }
-
-    @media (max-width: 860px) {
-      .contact-main { grid-template-columns: 1fr; margin-top: -32px; }
-    }
-
-    /* ── Info panel ──────────────────────────── */
-    .info-panel {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      animation: fadeUp 0.5s 0.15s both;
-    }
-
-    .info-card {
-      background: var(--surface);
-      border: 1.5px solid var(--border);
-      border-radius: 18px;
-      padding: 28px 24px;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .info-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 14px 36px rgba(91,191,58,0.1);
-    }
-
-    .info-card-head {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 14px;
-    }
-
-    .info-icon {
-      width: 46px; height: 46px;
-      border-radius: 12px;
-      background: var(--green-pale);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      flex-shrink: 0;
-    }
-
-    .info-card h3 {
-      font-family: var(--font-head);
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--ink);
-    }
-
-    .info-card p, .info-card a {
-      font-size: 13.5px;
-      color: var(--muted);
-      line-height: 1.65;
-      text-decoration: none;
-      display: block;
-    }
-    .info-card a:hover { color: var(--green-dark); }
-
-    /* office hours table-like */
-    .hours-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6px 16px;
-      margin-top: 4px;
-    }
-    .hours-grid .day { font-size: 12.5px; color: var(--ink-soft); font-weight: 500; }
-    .hours-grid .time { font-size: 12.5px; color: var(--muted); text-align: right; }
-
-    /* socials */
-    .socials {
-      display: flex;
-      gap: 10px;
-      margin-top: 16px;
-      flex-wrap: wrap;
-    }
-
-    .social-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--ink-soft);
-      background: var(--bg);
-      border: 1.5px solid var(--border);
-      border-radius: 100px;
-      padding: 7px 14px;
-      text-decoration: none;
-      transition: background 0.2s, border-color 0.2s, color 0.2s;
-    }
-    .social-btn:hover {
-      background: var(--green-pale);
-      border-color: var(--green);
-      color: var(--green-dark);
-    }
-
-    /* ── Form panel ──────────────────────────── */
-    .form-panel {
-      background: var(--surface);
-      border: 1.5px solid var(--border);
-      border-radius: 22px;
-      padding: 44px 40px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.05);
-      animation: fadeUp 0.55s 0.2s both;
-    }
-
-    .form-panel h2 {
-      font-family: var(--font-head);
-      font-size: 1.55rem;
-      font-weight: 800;
-      color: var(--ink);
-      margin-bottom: 6px;
-    }
-    .form-panel > p {
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 32px;
-      line-height: 1.6;
-    }
-
-    /* topic chips */
-    .topic-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 28px;
-    }
-
-    .chip {
-      font-size: 12px;
-      font-weight: 600;
-      padding: 7px 16px;
-      border-radius: 100px;
-      border: 1.5px solid var(--border);
-      color: var(--muted);
-      background: var(--bg);
-      cursor: pointer;
-      transition: all 0.2s;
-      user-select: none;
-    }
-    .chip:hover, .chip.active {
-      background: var(--green-pale);
-      border-color: var(--green);
-      color: var(--green-dark);
-    }
-
-    /* form rows */
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 16px;
-    }
-    @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      margin-bottom: 16px;
-    }
-
-    .field label {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-    }
-
-    .field input,
-    .field select,
-    .field textarea {
-      font-family: var(--font-body);
-      font-size: 14px;
-      color: var(--ink);
-      background: var(--bg);
-      border: 1.5px solid transparent;
-      border-radius: 12px;
-      padding: 12px 16px;
-      outline: none;
-      transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
-      resize: none;
-      width: 100%;
-    }
-
-    .field input::placeholder,
-    .field textarea::placeholder { color: #b0bfaa; }
-
-    .field input:focus,
-    .field select:focus,
-    .field textarea:focus {
-      border-color: var(--green);
-      background: var(--surface);
-      box-shadow: 0 0 0 3px rgba(91,191,58,0.12);
-    }
-
-    .field select { appearance: none; cursor: pointer; }
-
-    .select-wrap {
-      position: relative;
-    }
-    .select-wrap::after {
-      content: '▾';
-      position: absolute;
-      right: 14px; top: 50%;
-      transform: translateY(-50%);
-      font-size: 12px;
-      color: var(--muted);
-      pointer-events: none;
-    }
-
-    .field textarea { height: 130px; line-height: 1.6; }
-
-    /* file upload zone */
-    .upload-zone {
-      border: 2px dashed var(--border);
-      border-radius: 12px;
-      padding: 22px 20px;
-      text-align: center;
-      cursor: pointer;
-      transition: border-color 0.2s, background 0.2s;
-      background: var(--bg);
-      margin-bottom: 24px;
-    }
-    .upload-zone:hover {
-      border-color: var(--green);
-      background: var(--green-pale);
-    }
-    .upload-zone p {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.5;
-      margin: 0;
-    }
-    .upload-zone strong { color: var(--green-dark); }
-
-    /* submit */
-    .form-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
-    .btn-submit {
-      font-family: var(--font-head);
-      font-size: 14px;
-      font-weight: 700;
-      background: var(--green);
-      color: #fff;
-      border: none;
-      border-radius: 100px;
-      padding: 14px 36px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
-      box-shadow: 0 4px 20px rgba(91,191,58,0.35);
-    }
-    .btn-submit:hover {
-      background: var(--green-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(91,191,58,0.4);
-    }
-    .btn-submit svg { width: 16px; height: 16px; transition: transform 0.22s; }
-    .btn-submit:hover svg { transform: translateX(4px); }
-
-    .form-note {
-      font-size: 12px;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    /* ── Success toast ───────────────────────── */
-    .toast {
-      display: none;
-      position: fixed;
-      bottom: 32px; right: 32px;
-      background: var(--ink);
-      color: #fff;
-      border-left: 4px solid var(--green);
-      border-radius: 14px;
-      padding: 18px 24px;
-      font-size: 14px;
-      line-height: 1.5;
-      z-index: 999;
-      max-width: 320px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-      animation: toastIn 0.4s cubic-bezier(.22,1,.36,1);
-    }
-    .toast.show { display: block; }
-    .toast strong { display: block; font-family: var(--font-head); font-size: 15px; margin-bottom: 4px; color: var(--green); }
-    @keyframes toastIn {
-      from { transform: translateY(20px); opacity: 0; }
-      to   { transform: translateY(0);    opacity: 1; }
-    }
-
-    /* ── Map strip ───────────────────────────── */
-    .map-section {
-      background: var(--ink);
-      padding: 0;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .map-label {
-      position: absolute;
-      top: 24px; left: 40px;
-      z-index: 2;
-      background: var(--surface);
-      border: 1.5px solid var(--border);
-      border-radius: 12px;
-      padding: 12px 20px;
-      font-family: var(--font-head);
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--ink);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-    }
-    .map-label::before { content: ''; font-size: 16px; }
-
-    .map-embed {
-      width: 100%;
-      height: 380px;
-      display: block;
-      border: none;
-      filter: grayscale(30%) contrast(1.05);
-      opacity: 0.9;
-    }
-
-    
-    /* ── Footer ─────────────────────────────────────────── */
-    footer { background: var(--ink); padding: 64px 40px 0; }
-    .footer-top { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 52px; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    @media (max-width: 900px) { .footer-top { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 520px) { .footer-top { grid-template-columns: 1fr; } }
-
-    /* brand column spans full width of brand cell */
-    .footer-brand { display: flex; flex-direction: column; gap: 18px; }
-    .footer-logo-wrap { height: 38px; width: 160px; }
-    .footer-logo-placeholder {
-      width: 100%; height: 38px;
-      background: rgba(255,255,255,0.05);
-      border: 1.5px dashed rgba(255,255,255,0.14);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-    }
-    .footer-logo-placeholder span {
-      font-family: var(--font-head); font-size: 10px; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.2);
-    }
-    .footer-tagline { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.75; max-width: 280px; }
-
-    /* contact block */
-    .footer-contact-block { display: flex; flex-direction: column; gap: 10px; }
-    .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; }
-    .footer-contact-icon { width: 14px; height: 14px; flex-shrink: 0; color: var(--green); margin-top: 2px; }
-    .footer-contact-item a,
-    .footer-contact-item span { font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; line-height: 1.5; transition: color 0.2s; }
-    .footer-contact-item a:hover { color: var(--green); }
-
-    /* link columns */
-    .footer-links { display: contents; }
-    .footer-col h5 {
-      font-family: var(--font-head); font-size: 10.5px; font-weight: 700;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--green); margin-bottom: 16px;
-    }
-    .footer-col a {
-      display: block; font-size: 13px; color: rgba(255,255,255,0.45);
-      text-decoration: none; margin-bottom: 10px; transition: color 0.2s;
-    }
-    .footer-col a:hover { color: var(--green); }
-
-    /* bottom bar */
-    .footer-bottom {
-      max-width: 1100px; margin: 0 auto;
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 10px;
-      padding: 20px 0;
-      font-size: 12px; color: rgba(255,255,255,0.22);
-    }
-    .footer-bottom a { color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
-    .footer-bottom a:hover { color: var(--green); }
-    .footer-dot { margin: 0 6px; }
-
-    @media (max-width: 760px) {
-      footer { padding: 48px 20px 0; }
-      .footer-bottom { padding: 16px 0; }
-    }
-
-    /* ── Responsive ──────────────────────────── */
-    @media (max-width: 760px) {
-      
-      
-      
-      
-      
-      
-      .nav a.active, 
-      
-      
-
-      .page-hero { padding: 60px 20px 80px; }
-      .contact-main { padding: 0 20px 60px; }
-      .form-panel { padding: 28px 20px; }
-      .map-label { left: 20px; }
-      footer { padding: 48px 20px 28px; }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
@@ -648,7 +36,7 @@
         <img src="images/icon-location-sm.svg" alt="" width="12" height="12">
       -->
       <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1.5A4.5 4.5 0 0112.5 6c0 3.5-4.5 8.5-4.5 8.5S3.5 9.5 3.5 6A4.5 4.5 0 018 1.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
-      Wuse 2, Abuja
+      8A Thaba Tseka Street, Wuse 2, Abuja
     </div>
   </div>
 
@@ -657,14 +45,9 @@
   <header class="header">
     <a href="index.html" class="logo-link">
       <div class="logo-img-wrap">
-        <!--
-          LOGO PLACEHOLDER — replace this entire div with:
-          <img src="images/logo.png" alt="Enigma Transport Services">
-        -->
-        <div class="logo-placeholder">
-          <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><rect x="1" y="5" width="16" height="10" rx="2" stroke="#3a9e1f" stroke-width="1.5"/><path d="M5 5V4a4 4 0 018 0v1" stroke="#3a9e1f" stroke-width="1.5" stroke-linecap="round"/></svg>
-          <span>logo.png</span>
-        </div>
+        
+          <img src="images/transport_logo.png" alt="Enigma Transport Services">
+        
       </div>
     </a>
 
@@ -855,86 +238,59 @@
   </div>
 
     <!-- Footer -->
-  <footer>
-    <div class="footer-top">
-      <div class="footer-brand">
-        <!--
-          FOOTER LOGO PLACEHOLDER
-          Replace the .footer-logo-placeholder div with:
-          <img src="images/logo-white.png" alt="Enigma Transport Services" style="height:36px;width:auto;display:block;">
-        -->
-        <div class="footer-logo-wrap">
-          <div class="footer-logo-placeholder">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-              <rect x="1" y="5" width="16" height="10" rx="2" stroke="rgba(255,255,255,0.3)" stroke-width="1.4"/>
-              <path d="M5 5V4a4 4 0 018 0v1" stroke="rgba(255,255,255,0.3)" stroke-width="1.4" stroke-linecap="round"/>
-            </svg>
-            <span>logo-white.png</span>
-          </div>
-        </div>
-        <p class="footer-tagline">A structured hire purchase platform helping transport workers in Abuja own their assets. Founded 2026.</p>
-        <div class="footer-contact-block">
-          <div class="footer-contact-item">
-            <!--
-              ICON PLACEHOLDER — replace svg with your phone icon image:
-              <img src="images/icon-phone.svg" alt="" width="14" height="14">
-            -->
-            <svg class="footer-contact-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 10.67v2a1.33 1.33 0 01-1.45 1.33 13.19 13.19 0 01-5.75-2.05 13 13 0 01-4-4A13.19 13.19 0 01.75 2.45 1.33 1.33 0 012.07 1h2a1.33 1.33 0 011.33 1.14 8.56 8.56 0 00.47 1.88 1.33 1.33 0 01-.3 1.41L4.59 6.4a10.67 10.67 0 004 4l.97-.97a1.33 1.33 0 011.41-.3 8.56 8.56 0 001.88.47A1.33 1.33 0 0114 10.67z"/></svg>
-            <a href="tel:+2348000000000">+234 800 000 0000</a>
-          </div>
-          <div class="footer-contact-item">
-            <!--
-              ICON PLACEHOLDER — replace svg with your email icon image:
-              <img src="images/icon-email.svg" alt="" width="14" height="14">
-            -->
-            <svg class="footer-contact-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="14" height="10" rx="1.5"/><path d="M1 3l7 5.5L15 3"/></svg>
-            <a href="/cdn-cgi/l/email-protection#1e777078715e7b707779737f6a6c7f706d6e716c6a307d7173"><span class="__cf_email__" data-cfemail="1970777f76597c77707e74786d6b78776a69766b6d377a7674">[email&#160;protected]</span></a>
-          </div>
-          <div class="footer-contact-item">
-            <!--
-              ICON PLACEHOLDER — replace svg with your location icon image:
-              <img src="images/icon-location.svg" alt="" width="14" height="14">
-            -->
-            <svg class="footer-contact-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1.5A4.5 4.5 0 0112.5 6c0 3.5-4.5 8.5-4.5 8.5S3.5 9.5 3.5 6A4.5 4.5 0 018 1.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
-            <span>8A Thaba Tseka Street, Wuse 2, Abuja</span>
-          </div>
-        </div>
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo-wrap">
+        <img src="images/transport_logo.png" alt="Enigma Transport Services">
       </div>
-
-      <div class="footer-links">
-        <div class="footer-col">
-          <h5>Company</h5>
-          <a href="index.html">Home</a>
-          <a href="about.html">About Us</a>
-          <a href="services.html">Services</a>
-          <a href="contact.html">Contact</a>
+      <p class="footer-tagline">A structured hire purchase platform helping transport workers in Abuja own their assets. Founded 2026.</p>
+      <div class="footer-contact-block">
+        <div class="footer-contact-item">
+          <svg class="footer-contact-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 10.67v2a1.33 1.33 0 01-1.45 1.33 13.19 13.19 0 01-5.75-2.05 13 13 0 01-4-4A13.19 13.19 0 01.75 2.45 1.33 1.33 0 012.07 1h2a1.33 1.33 0 011.33 1.14 8.56 8.56 0 00.47 1.88 1.33 1.33 0 01-.3 1.41L4.59 6.4a10.67 10.67 0 004 4l.97-.97a1.33 1.33 0 011.41-.3 8.56 8.56 0 001.88.47A1.33 1.33 0 0114 10.67z"/></svg>
+          <a href="tel:+2348000000000">+234 800 000 0000</a>
         </div>
-        <div class="footer-col">
-          <h5>Ownership Plans</h5>
-          <a href="plans.html#wheelbarrow">Wheelbarrow</a>
-          <a href="plans.html#keke">Keke Napep</a>
-          <a href="plans.html#motorbike">Motorbike</a>
-          <a href="plans.html#automobile">Used Automobile</a>
-          <a href="plans.html#tiers">Tier A vs Tier B</a>
+        <div class="footer-contact-item">
+          <svg class="footer-contact-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="14" height="10" rx="1.5"/><path d="M1 3l7 5.5L15 3"/></svg>
+          <a href="mailto:info@enigmatransport.com">info@enigmatransport.com</a>
         </div>
-        <div class="footer-col">
-          <h5>Legal</h5>
-          <a href="terms.html">Terms &amp; Conditions</a>
-          <a href="contact.html">Privacy Policy</a>
-          <a href="quote.html">Get a Quote</a>
+        <div class="footer-contact-item">
+          <svg class="footer-contact-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1.5A4.5 4.5 0 0112.5 6c0 3.5-4.5 8.5-4.5 8.5S3.5 9.5 3.5 6A4.5 4.5 0 018 1.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+          <span>8A Thaba Tseka Street, Wuse 2, Abuja</span>
         </div>
       </div>
     </div>
-
-    <div class="footer-bottom">
-      <span>&copy; 2026 Enigma Transport Services. All rights reserved.</span>
-      <span>
-        <a href="terms.html">Terms &amp; Conditions</a>
-        <span class="footer-dot">&middot;</span>
-        <a href="contact.html">Privacy Policy</a>
-      </span>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
     </div>
-  </footer>
+    <div class="footer-col">
+      <h5>Ownership Plans</h5>
+      <a href="plans.html#wheelbarrow">Wheelbarrow</a>
+      <a href="plans.html#keke">Keke Napep</a>
+      <a href="plans.html#motorbike">Motorbike</a>
+      <a href="plans.html#automobile">Used Automobile</a>
+      <a href="plans.html#tiers">Tier A vs Tier B</a>
+    </div>
+    <div class="footer-col">
+      <h5>Legal</h5>
+      <a href="terms.html">Terms &amp; Conditions</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="quote.html">Get a Quote</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Enigma Transport Services. All rights reserved.</span>
+    <span>
+      <a href="terms.html">Terms &amp; Conditions</a>
+      <span class="footer-dot">&middot;</span>
+      <a href="privacy.html">Privacy Policy</a>
+    </span>
+  </div>
+</footer>
 
   <!-- Toast notification -->
   <div class="toast" id="toast">
