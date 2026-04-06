@@ -974,3 +974,35 @@ footer { background: var(--ink); padding: 64px 40px 0; }
 .terms-section ol { counter-reset: item; }
 .terms-section ol li { counter-increment: item; }
 .terms-section ol li::before { content: counter(item) "."; font-family: var(--font-head); font-size: 12px; font-weight: 700; color: var(--green-dark); flex-shrink: 0; min-width: 20px; margin-top: 2px; }
+
+
+/* Plans page mobile fix */
+@media (max-width: 820px) {
+  .asset-section .asset-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .asset-body {
+    padding: 24px 20px;
+    overflow: hidden;
+  }
+
+  .asset-content p {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .asset-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .asset-actions .btn-primary,
+  .asset-actions .btn-outline {
+    flex: 1;
+    justify-content: center;
+    min-width: 130px;
+    text-align: center;
+  }
+}
