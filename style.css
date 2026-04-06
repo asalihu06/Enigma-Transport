@@ -1006,3 +1006,14 @@ footer { background: var(--ink); padding: 64px 40px 0; }
     text-align: center;
   }
 }
+
+@media (max-width: 480px) {
+  .pricing-grid { gap: 8px; }
+  .pricing-card { padding: 12px 10px; }
+  .pricing-label { font-size: 9px; margin-bottom: 8px; }
+  .pricing-row { flex-direction: column; align-items: flex-start; gap: 1px; padding: 4px 0; }
+  .pricing-row .pk { font-size: 10px; }
+  .pricing-row .pv { font-size: 11px; }
+  .asset-actions { flex-direction: row; flex-wrap: wrap; gap: 10px; }
+  .asset-actions .btn-primary, .asset-actions .btn-outline { flex: 1; justify-content: center; min-width: 130px; text-align: center; }
+}
