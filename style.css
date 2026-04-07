@@ -96,8 +96,8 @@ body { font-family: var(--font-body); background: var(--surface); color: var(--i
   height: 68px; animation: slideDown 0.5s ease both;
 }
 .logo-link { text-decoration: none; display: flex; align-items: center; flex-shrink: 0; }
-.logo-img-wrap { height: 400px; width: 168px; display: flex; align-items: center; }
-.logo-img-wrap img { height: 120px; width: auto; display: block; object-fit: contain; margin-bottom: 10px; }
+.logo-img-wrap { height: 80px; width: auto; display: flex; align-items: center; }
+.logo-img-wrap img { height: 80px; width: auto; display: block; object-fit: contain; margin-bottom: 5px; }
 
 /* ── Nav ── */
 .nav { display: flex; align-items: center; gap: 0; }
@@ -242,7 +242,7 @@ footer { background: var(--ink); padding: 64px 40px 0; }
 @media (max-width: 520px) { .footer-grid { grid-template-columns: 1fr; } }
 .footer-brand { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; margin-top: -20px; }
 .footer-logo-wrap { display: block; line-height: 0; margin-bottom: -10px; }
-.footer-logo-wrap img { height: 160px; width: auto; display: block; mix-blend-mode: screen; filter: brightness(0) invert(1); }
+.footer-logo-wrap img { height: 80px; width: auto; display: block; mix-blend-mode: screen; filter: brightness(0) invert(1); }
 .footer-tagline { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.75; max-width: 280px; }
 .footer-contact-block { display: flex; flex-direction: column; gap: 10px; }
 .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; }
@@ -507,8 +507,8 @@ footer { background: var(--ink); padding: 64px 40px 0; }
 .tier-box-row .tb-val { font-family: var(--font-head); font-weight: 700; color: var(--ink); }
 .tier-box-row .tb-val.green { color: var(--green-dark); }
 
-.asset-cta { display: flex; gap: 10px; flex-wrap: wrap; }
-.btn-ghost-sm { font-family: var(--font-head); font-size: 13px; font-weight: 700; background: transparent; color: var(--ink-soft); border: 1.5px solid var(--border); border-radius: 100px; padding: 11px 22px; cursor: pointer; transition: border-color 0.22s, color 0.22s, background 0.22s; }
+.asset-cta { display: flex; gap: 8px;}
+.btn-ghost-sm { font-family: var(--font-head); font-size: 12px; font-weight: 700; background: transparent; color: var(--ink-soft); border: 1.5px solid var(--border); border-radius: 100px; padding: 11px 22px; cursor: pointer; transition: border-color 0.22s, color 0.22s, background 0.22s; }
 .btn-ghost-sm:hover { border-color: var(--green); color: var(--green-dark); background: var(--green-pale); }
 
 .hp-section { padding: 100px 40px; background: var(--surface); }
@@ -1016,4 +1016,60 @@ footer { background: var(--ink); padding: 64px 40px 0; }
   .pricing-row .pv { font-size: 10px; }
   .asset-actions { flex-direction: row; flex-wrap: wrap; gap: 10px; }
   .asset-actions .btn-primary, .asset-actions .btn-outline { flex: 1; justify-content: center; min-width: 130px; text-align: center; }
+}
+
+
+/* Fix asset row overflow on mobile */
+@media (max-width: 820px) {
+  .asset-row,
+  .asset-row.reverse {
+    grid-template-columns: 1fr;
+    direction: ltr;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .asset-img-wrap {
+    height: 220px;   /* reduce from 340px */
+    width: 100%;
+  }
+
+  .asset-body {
+    padding: 24px 18px;
+    min-width: 0;    /* critical — allows flex/grid children to shrink */
+    overflow: hidden;
+  }
+
+  .asset-tiers {
+    grid-template-columns: 1fr 1fr;
+    min-width: 0;
+  }
+
+  .tier-box {
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .tier-box-row .tb-val {
+    font-size: 11px;   /* prevent long ₦ values from overflowing */
+    word-break: break-word;
+  }
+
+  .asset-cta {
+    flex-wrap: wrap;
+  }
+
+  .asset-cta .btn-primary,
+  .asset-cta .btn-ghost-sm {
+    flex: 1;
+    justify-content: center;
+    min-width: 120px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 820px) {
+  .catalogue {
+    padding: 60px 16px;
+  }
 }
