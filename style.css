@@ -1000,9 +1000,9 @@ footer { background: var(--ink); padding: 64px 40px 0; }
 
   .asset-actions .btn-primary,
   .asset-actions .btn-outline {
-    flex: 1;
+    flex: none;
     justify-content: center;
-    min-width: 130px;
+    
     text-align: center;
   }
 }
