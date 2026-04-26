@@ -10,10 +10,12 @@
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-
   <div class="top-bar">
     <span>+234 800 000 0000</span>
-    <span><a href="mailto:info@enigmatransport.com">info@enigmatransport.com</a></span>
+        <div class="top-bar-item">
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="1" y="3" width="14" height="10" rx="1.5"/><path d="M1 3l7 5.5L15 3"/></svg>
+      enigmatransport@gmail.com
+    </div>
     <span>Abuja, Nigeria</span>
   </div>
 
@@ -32,11 +34,12 @@
       <a href="about.html">About</a>
       <a href="services.html" class="active">Services</a>
       <a href="contact.html">Contact</a>
-      <a href="quote.html" class="nav-cta">Get a Quote</a>
-    </nav>
+        </nav>
+  <div class="cta-group">
+    <a href="invest.html" class="nav-cta">Invest</a>
+    <a href="quote.html" class="nav-cta-secondary">Get a Quote</a>
+  </div>
   </header>
-
-  <!-- Page hero -->
   <section class="page-hero">
     <div class="page-hero-inner">
       <div class="breadcrumb">
@@ -47,8 +50,6 @@
       <p>Two tiers, fixed weekly remittances, and full ownership when the contract is done.</p>
     </div>
   </section>
-
-  <!-- Asset Catalogue -->
   <section class="catalogue" id="assets">
     <div class="catalogue-inner">
       <div class="catalogue-head">
@@ -58,43 +59,24 @@
       </div>
 
       <div class="asset-list">
-
-        <!-- 1. Wheelbarrow -->
-        <div class="asset-row" id="wheelbarrow">
+        <div class="asset-row" id="Electric_Mobility">
           <div class="asset-img-wrap">
-            <img src="images/wheelbarrow.png" alt="Wheelbarrow" style="width:100%;height:100%;object-fit:cover;">
+            <img src="images/electric.png" alt="Electric Bike" style="width:100%;height:100%;object-fit:cover;">
           </div>
           <div class="asset-body">
             <div class="asset-badge">Currently Active</div>
-            <h3>Wheelbarrow</h3>
-            <p>For market traders, construction workers, and logistics staff. Low contract value, fast approval, no collateral required.</p>
-            <div class="asset-tiers">
-              <div class="tier-box">
-                <div class="tier-box-label">Tier A</div>
-                <div class="tier-box-row"><span class="tb-key">Deposit</span><span class="tb-val green">₦20,000</span></div>
-                <div class="tier-box-row"><span class="tb-key">Contract</span><span class="tb-val">₦65,000</span></div>
-                <div class="tier-box-row"><span class="tb-key">Weekly</span><span class="tb-val">₦2,050</span></div>
-                <div class="tier-box-row"><span class="tb-key">Duration</span><span class="tb-val">5 Months</span></div>
-              </div>
-              <div class="tier-box">
-                <div class="tier-box-label">Tier B</div>
-                <div class="tier-box-row"><span class="tb-key">Deposit</span><span class="tb-val green">₦15,000</span></div>
-                <div class="tier-box-row"><span class="tb-key">Contract</span><span class="tb-val">₦67,500</span></div>
-                <div class="tier-box-row"><span class="tb-key">Weekly</span><span class="tb-val">₦1,500</span></div>
-                <div class="tier-box-row"><span class="tb-key">Duration</span><span class="tb-val">8 Months</span></div>
-              </div>
-            </div>
+            <h3>Electric Bike</h3>
+            <p>For licensed riders and delivery services. Optimized for efficient electric transport in busy urban areas.</p>
+            
             <div class="asset-cta">
               <button class="btn-primary" onclick="window.location.href='quote.html'">
                 Get a Quote
                 <svg viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 3l3.5 3.5L7 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </button>
-              <button class="btn-ghost-sm" onclick="window.location.href='plans.html#wheelbarrow'">View Full Details</button>
+              <button class="btn-ghost-sm" onclick="window.location.href='plans.html#electric-bike'">View Full Details</button>
             </div>
           </div>
         </div>
-
-        <!-- 2. Keke Napep -->
         <div class="asset-row reverse" id="keke-napep">
           <div class="asset-img-wrap">
             <img src="images/keke.png" alt="Keke Napep" style="width:100%;height:100%;object-fit:cover;">
@@ -103,22 +85,7 @@
             <div class="asset-badge">Available on Request</div>
             <h3>Keke Napep (Tricycle)</h3>
             <p>For city route drivers, school run operators, and market commuters across the FCT. High daily fare potential, low fuel consumption. GPS-fitted before delivery.</p>
-            <div class="asset-tiers">
-              <div class="tier-box">
-                <div class="tier-box-label">Tier A</div>
-                <div class="tier-box-row"><span class="tb-key">Deposit</span><span class="tb-val green">₦1,400,000</span></div>
-                <div class="tier-box-row"><span class="tb-key">Contract</span><span class="tb-val">₦5,400,000</span></div>
-                <div class="tier-box-row"><span class="tb-key">Weekly</span><span class="tb-val">₦77,000</span></div>
-                <div class="tier-box-row"><span class="tb-key">Duration</span><span class="tb-val">12 Months</span></div>
-              </div>
-              <div class="tier-box">
-                <div class="tier-box-label">Tier B</div>
-                <div class="tier-box-row"><span class="tb-key">Deposit</span><span class="tb-val green">₦1,000,000</span></div>
-                <div class="tier-box-row"><span class="tb-key">Contract</span><span class="tb-val">₦5,600,000</span></div>
-                <div class="tier-box-row"><span class="tb-key">Weekly</span><span class="tb-val">₦60,500</span></div>
-                <div class="tier-box-row"><span class="tb-key">Duration</span><span class="tb-val">18 Months</span></div>
-              </div>
-            </div>
+            
             <div class="asset-cta">
               <button class="btn-primary" onclick="window.location.href='quote.html'">
                 Get a Quote
@@ -128,8 +95,6 @@
             </div>
           </div>
         </div>
-
-        <!-- 3. Motorbike -->
         <div class="asset-row" id="motorbike">
           <div class="asset-img-wrap">
             <img src="images/bike.png" alt="Motorbike" style="width:100%;height:100%;object-fit:cover;">
@@ -138,22 +103,7 @@
             <div class="asset-badge">Available on Request</div>
             <h3>Motorbike</h3>
             <p>For dispatch riders and delivery operators. If you're already riding someone else's bike, this plan puts you on a path to owning yours. GPS and remote immobilization fitted before handover.</p>
-            <div class="asset-tiers">
-              <div class="tier-box">
-                <div class="tier-box-label">Tier A</div>
-                <div class="tier-box-row"><span class="tb-key">Deposit</span><span class="tb-val green">₦520,000</span></div>
-                <div class="tier-box-row"><span class="tb-key">Contract</span><span class="tb-val">₦1,820,000</span></div>
-                <div class="tier-box-row"><span class="tb-key">Weekly</span><span class="tb-val">₦30,250</span></div>
-                <div class="tier-box-row"><span class="tb-key">Duration</span><span class="tb-val">10 Months</span></div>
-              </div>
-              <div class="tier-box">
-                <div class="tier-box-label">Tier B</div>
-                <div class="tier-box-row"><span class="tb-key">Deposit</span><span class="tb-val green">₦350,000</span></div>
-                <div class="tier-box-row"><span class="tb-key">Contract</span><span class="tb-val">₦1,885,000</span></div>
-                <div class="tier-box-row"><span class="tb-key">Weekly</span><span class="tb-val">₦25,600</span></div>
-                <div class="tier-box-row"><span class="tb-key">Duration</span><span class="tb-val">14 Months</span></div>
-              </div>
-            </div>
+            
             <div class="asset-cta">
               <button class="btn-primary" onclick="window.location.href='quote.html'">
                 Get a Quote
@@ -163,8 +113,6 @@
             </div>
           </div>
         </div>
-
-        <!-- 4. Keke Truck -->
         <div class="asset-row reverse" id="keke-truck">
           <div class="asset-img-wrap">
             <img src="images/keke-truck.jpg" alt="Keke Truck" style="width:100%;height:100%;object-fit:cover;">
@@ -173,22 +121,7 @@
             <div class="asset-badge">Available on Request</div>
             <h3>Keke Truck (Cargo Tricycle)</h3>
             <p>For goods haulage, market logistics, and construction supply. Built to carry produce and materials — not passengers. GPS-fitted before delivery.</p>
-            <div class="asset-tiers">
-              <div class="tier-box">
-                <div class="tier-box-label">Tier A</div>
-                <div class="tier-box-row"><span class="tb-key">Deposit</span><span class="tb-val green">₦1,400,000</span></div>
-                <div class="tier-box-row"><span class="tb-key">Contract</span><span class="tb-val">₦5,400,000</span></div>
-                <div class="tier-box-row"><span class="tb-key">Weekly</span><span class="tb-val">₦77,000</span></div>
-                <div class="tier-box-row"><span class="tb-key">Duration</span><span class="tb-val">12 Months</span></div>
-              </div>
-              <div class="tier-box">
-                <div class="tier-box-label">Tier B</div>
-                <div class="tier-box-row"><span class="tb-key">Deposit</span><span class="tb-val green">₦1,000,000</span></div>
-                <div class="tier-box-row"><span class="tb-key">Contract</span><span class="tb-val">₦5,600,000</span></div>
-                <div class="tier-box-row"><span class="tb-key">Weekly</span><span class="tb-val">₦60,500</span></div>
-                <div class="tier-box-row"><span class="tb-key">Duration</span><span class="tb-val">18 Months</span></div>
-              </div>
-            </div>
+            
             <div class="asset-cta">
               <button class="btn-primary" onclick="window.location.href='quote.html'">
                 Get a Quote
@@ -198,8 +131,6 @@
             </div>
           </div>
         </div>
-
-        <!-- 5. Automobile -->
         <div class="asset-row" id="automobile">
           <div class="asset-img-wrap">
             <img src="images/car.png" alt="Automobile" style="width:100%;height:100%;object-fit:cover;">
@@ -208,22 +139,6 @@
             <div class="asset-badge">Available on Request</div>
             <h3>Automobile</h3>
             <p>For Bolt, InDrive, and private hire drivers. Own your car — keep 100% of every fare. Each vehicle is individually sourced, fully serviced, and GPS-fitted before delivery. Contract value confirmed at point of agreement.</p>
-            <div class="asset-tiers">
-              <div class="tier-box">
-                <div class="tier-box-label">Tier A</div>
-                <div class="tier-box-row"><span class="tb-key">Deposit</span><span class="tb-val green">₦2,000,000</span></div>
-                <div class="tier-box-row"><span class="tb-key">Contract</span><span class="tb-val">₦8,800,000</span></div>
-                <div class="tier-box-row"><span class="tb-key">Weekly</span><span class="tb-val">₦113,500</span></div>
-                <div class="tier-box-row"><span class="tb-key">Duration</span><span class="tb-val">14 Months</span></div>
-              </div>
-              <div class="tier-box">
-                <div class="tier-box-label">Tier B</div>
-                <div class="tier-box-row"><span class="tb-key">Deposit</span><span class="tb-val green">₦1,500,000</span></div>
-                <div class="tier-box-row"><span class="tb-key">Contract</span><span class="tb-val">₦9,100,000</span></div>
-                <div class="tier-box-row"><span class="tb-key">Weekly</span><span class="tb-val">₦97,500</span></div>
-                <div class="tier-box-row"><span class="tb-key">Duration</span><span class="tb-val">18 Months</span></div>
-              </div>
-            </div>
             <div class="asset-cta">
               <button class="btn-primary" onclick="window.location.href='quote.html'">
                 Get a Quote
@@ -233,12 +148,9 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
-
-  <!-- Hire purchase explained -->
   <section class="hp-section" id="how-it-works">
     <div class="hp-inner">
       <div class="hp-text">
@@ -277,7 +189,6 @@
           </div>
         </div>
       </div>
-
       <div class="hp-visual">
         <div class="hp-img-frame">
           <img src="images/hire.png" alt="Hire Purchase" style="width:100%;height:100%;object-fit:cover;">
@@ -290,8 +201,6 @@
       </div>
     </div>
   </section>
-
-  <!-- Plan comparison — Tier A vs Tier B -->
   <section class="plans" id="plans">
     <div class="plans-inner">
       <div class="plans-head">
@@ -332,8 +241,6 @@
       </div>
     </div>
   </section>
-
-  <!-- Additional services -->
   <section class="add-services" id="additional">
     <div class="add-inner">
       <div class="add-head">
@@ -423,8 +330,6 @@
       </div>
     </div>
   </section>
-
-  <!-- FAQ -->
   <section class="faq">
     <div class="faq-inner">
       <div class="faq-head">
@@ -450,7 +355,7 @@
             <div class="faq-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M6 2v8M2 6h8" stroke="#6b7c65" stroke-width="1.5" stroke-linecap="round"/></svg></div>
           </div>
           <div class="faq-a">
-            <div class="faq-a-inner">Not for entry-level assets like the wheelbarrow. For higher-value assets, a bank account may be required depending on the agreed remittance method. Mobile transfers and cash are accepted across all plan types.</div>
+            <div class="faq-a-inner">Certain plan types may require a bank account for higher-value assets across all plan types.</div>
           </div>
         </div>
 
@@ -460,7 +365,7 @@
             <div class="faq-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M6 2v8M2 6h8" stroke="#6b7c65" stroke-width="1.5" stroke-linecap="round"/></svg></div>
           </div>
           <div class="faq-a">
-            <div class="faq-a-inner">One guarantor is required — an employed professional, established business owner, or recognised community/religious leader. They sign a Deed of Indemnity covering the full contract value and assume liability in the event of default. This is a firm requirement with no exceptions.</div>
+            <div class="faq-a-inner">One guarantor is required an employed professional, established business owner, or recognised community/religious leader. They sign a Deed of Indemnity covering the full contract value and assume liability in the event of default. This is a firm requirement with no exceptions.</div>
           </div>
         </div>
 
@@ -480,7 +385,7 @@
             <div class="faq-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M6 2v8M2 6h8" stroke="#6b7c65" stroke-width="1.5" stroke-linecap="round"/></svg></div>
           </div>
           <div class="faq-a">
-            <div class="faq-a-inner">Yes — and we encourage it. Any payment above the agreed weekly amount is applied directly to your outstanding balance, shortening your contract. There is no prepayment penalty.</div>
+            <div class="faq-a-inner">Yes and we encourage it. Any payment above the agreed weekly amount is applied directly to your outstanding balance, shortening your contract. There is no prepayment penalty.</div>
           </div>
         </div>
 
@@ -490,7 +395,7 @@
             <div class="faq-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M6 2v8M2 6h8" stroke="#6b7c65" stroke-width="1.5" stroke-linecap="round"/></svg></div>
           </div>
           <div class="faq-a">
-            <div class="faq-a-inner">Routine consumables — oil, filters, tyres, minor repairs — are the driver's responsibility. Major structural failures (engine or gearbox) are covered by Enigma. All assets are fully serviced before delivery.</div>
+            <div class="faq-a-inner">Routine consumables like oil, filters, tyres, minor repairs are the driver's responsibility. Major structural failures (engine or gearbox) are covered by Enigma. All assets are fully serviced before delivery.</div>
           </div>
         </div>
 
@@ -500,15 +405,13 @@
             <div class="faq-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M6 2v8M2 6h8" stroke="#6b7c65" stroke-width="1.5" stroke-linecap="round"/></svg></div>
           </div>
           <div class="faq-a">
-            <div class="faq-a-inner">Assets are sourced per confirmed client, not held in stock. Wheelbarrows have the fastest turnaround. For all other assets, we confirm a clear delivery timeline before you commit.</div>
+            <div class="faq-a-inner">Assets are sourced per confirmed client, not held in stock. For all other assets, we confirm a clear delivery timeline before you commit.</div>
           </div>
         </div>
 
       </div>
     </div>
   </section>
-
-  <!-- CTA Banner -->
   <section class="cta-banner">
     <h2>Found a plan that fits?</h2>
     <p>Request a quote and we'll confirm availability, walk you through the plan, and give you a clear next step — no pressure.</p>
@@ -517,8 +420,6 @@
       <button class="btn-outline-white" onclick="window.location.href='contact.html'">Speak to the Team</button>
     </div>
   </section>
-
-  <!-- Footer -->
   <footer>
     <div class="footer-grid">
       <div class="footer-brand">
@@ -550,7 +451,7 @@
       </div>
       <div class="footer-col">
         <h5>Ownership Plans</h5>
-        <a href="plans.html#wheelbarrow">Wheelbarrow</a>
+        <a href="plans.html#electric-bike">Electric Bike</a>
         <a href="plans.html#keke">Keke Napep</a>
         <a href="plans.html#motorbike">Motorbike</a>
         <a href="plans.html#keke-truck">Keke Truck</a>
