@@ -42,32 +42,35 @@
       8A Thaba Tseka Street, Wuse 2, Abuja
     </div>
   </div>
-  <header class="header">
-    <a href="home.html" class="logo-link">
-      <div class="logo-img-wrap">
-        
-          <img src="images/transport_logo.png" alt="Enigma Transport Services">
-        
-      </div>
-    </a>
-
-    <button class="menu-toggle" aria-label="Toggle menu"
-      onclick="this.nextElementSibling.classList.toggle('open')">
-      <span></span><span></span><span></span>
-    </button>
-
-    <nav class="nav">
-      <a href="home.html" class="active">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html">Services</a>
-      <a href="contact.html">Contact</a>
-      </nav>
-      <div class="cta-group">
-      <a href="invest.html" class="nav-cta">Invest</a>
-      <a href="quote.html" class="nav-cta-secondary">Get a Quote</a>
+ <header class="header">
+  <a href="home.html" class="logo-link">
+    <div class="logo-img-wrap">
+      <img src="images/transport_logo.png" alt="Enigma Transport Services">
     </div>
-  </header>
+  </a>
 
+  <nav class="nav">
+    <a href="home.html" class="active">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Contact</a>
+
+    <!-- Mobile-only CTAs (hidden on desktop via CSS) -->
+    <a href="invest.html" class="nav-cta">Invest</a>
+    <a href="quote.html" class="nav-cta-secondary">Get a Quote</a>
+  </nav>
+
+  <!-- Desktop-only CTAs -->
+  <div class="cta-group">
+    <a href="invest.html" class="nav-cta">Invest</a>
+    <a href="quote.html" class="nav-cta-secondary">Get a Quote</a>
+  </div>
+
+  <button class="menu-toggle" aria-label="Toggle menu"
+    onclick="this.previousElementSibling.previousElementSibling.classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</header>
 <section class="hero">
   <div class="hero-slides" id="heroSlides">
 
